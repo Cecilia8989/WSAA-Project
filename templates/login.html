@@ -1,14 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login Page</h1>
-    <a href='{{url_for('register')}}'>I don't have an account sign up</a><br>
-    <a href="{{ url_for('home') }}" class="link">Go back to the home</a>
+{% extends "base.html" %}
+{% block title %}
+  Login
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<style>
+  /* CSS for centering content */
+  #cent {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+  }
+</style>
+
+<h3 align="center">Login</h3>
+
+<!-- Start of centered content -->
+<div id="cent">
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 400px; padding: 20px;">
+    <form method="POST">
+      <div>
+        <div class="form-group">
+            <label for="Username">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="Username"
+              name="Username"
+              placeholder="Enter first name"
+            />
+          </div>
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password1"
+            name="password"
+            placeholder="Enter password"
+          />
+        </div>
+        <div style="text-align: center;"> <!-- Aligning the button to the center -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>
+<!-- End of centered content -->
+{% endblock %}

@@ -1,48 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .link {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #333;
-            background-color: #f4f4f4;
-            padding: 10px 20px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        .link:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Login Authentication</h1>
-        <a href="{{ url_for('login') }}" class="link">Login Page</a>
-        <a href="{{ url_for('register') }}" class="link">Register</a>
-    </div>
-</body>
-</html>
+<'--https://stackoverflow.com/questions/52544089/how-to-create-two-html-buttons-side-by-side--'>
+<'--https://www.altcademy.com/blog/how-to-link-a-button-to-another-page-in-html/'>
+
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS for centering content */
+    #cent {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  </style>
+</style>
+<h3 align="center">Select your action</h3>
+
+<!-- Start of centered content -->
+<div id="cent">
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
+    <form method="POST">
+      <div>
+        
+        <div style="text-align: center;"> <!-- Aligning the button to the center -->
+            <button name="Employee" class="btn btn-primary" type="button" onclick="showEmployees()">Show<br>Employee-Database</button>
+            <button name="UpdateEmployee" class="btn btn-primary" type="button" onclick="updateEamployeesDatabase()">Update the Database<br><span style="font-size: 14px;">(Authentication Needed)</span></button>
+
+      </div>
+    </form>
+  </fieldset>
+</div>
+<script>
+    function showEmployees() {
+       window.location.href="/show_employees" 
+    }
+    function updateEamployeesDatabase() {
+        window.location.href="/update_employees" 
+     }
+</script>
+{% endblock %}
+

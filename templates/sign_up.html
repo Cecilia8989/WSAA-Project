@@ -1,0 +1,85 @@
+<!-- More information on CSS positioning can be found at: 
+https://www.w3schools.com/css/css_positioning.asp - fixing position -->
+<!-- More information on CSS positioning can be found at: 
+<!--https://www.w3schools.com/css/css_positioning.asp - padding --> 
+
+{% extends "base.html" %}
+{% block title %}
+  Sign up
+{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS for centering content */
+    #cent {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  </style>
+</style>
+
+<h3 align="center">Sign Up</h3>
+
+<!-- Start of centered content -->
+<div id="cent">
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
+    <form method="POST">
+      <div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              placeholder="-- Enter Username --"
+            />
+        <div class="form-group">
+              <label for="-- First_Name -- ">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_Name"
+                name="first_Name"
+                placeholder="-- Enter First Name -- "
+        />
+        <div class="form-group">
+          <label for="Second_Name">Second Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="second_Name"
+            name="second_Name"
+            placeholder="-- Enter Second Name --"
+        />       
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password1"
+            name="password1"
+            placeholder="Enter password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Password (Confirm)</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password2"
+            name="password2"
+            placeholder="Confirm password"
+          />
+        </div>
+        <br />
+        <div style="text-align: center;"> <!-- Aligning the button to the center -->
+            <button type="submit" class="btn btn-primary">Submit</button> <!-- Added margin-top to create space -->
+      </div>
+    </form>
+  </fieldset>
+</div>
+<script>
+</script>
+{% endblock %}
