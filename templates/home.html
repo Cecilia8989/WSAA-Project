@@ -1,6 +1,3 @@
-<'--https://stackoverflow.com/questions/52544089/how-to-create-two-html-buttons-side-by-side--'>
-<'--https://www.altcademy.com/blog/how-to-link-a-button-to-another-page-in-html/'>
-
 {% extends "base.html" %}
 
 {% block title %}
@@ -8,24 +5,24 @@ Home
 {% endblock %}
 
 {% block content %}
+
 <style>
-    /* CSS for centering content */
-    #cent {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
-    }
-  </style>
+  .relative {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin-left: 60px; 
+  }
 </style>
-<h3 align="center">Select your action</h3>
 
 <!-- Start of centered content -->
-<div id="cent">
-  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
+<div class="relative">
+  <h3 style="margin-bottom: 40px; margin-top: 40px;">Select your action</h3>
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px; color: font-weight: bold;">
     <form method="POST">
       <div>
         
-        <div style="text-align: center;"> <!-- Aligning the button to the center -->
+        <div style="text-align: center;"> <!-- Allineamento del pulsante al centro -->
             <button name="Employee" class="btn btn-primary" type="button" onclick="showEmployees()">Show<br>Employee-Database</button>
             <button name="UpdateEmployee" class="btn btn-primary" type="button" onclick="updateEamployeesDatabase()">Update the Database<br><span style="font-size: 14px;">(Authentication Needed)</span></button>
 
@@ -34,12 +31,11 @@ Home
   </fieldset>
 </div>
 <script>
-    function showEmployees() {
-       window.location.href="/show_employees" 
-    }
-    function updateEamployeesDatabase() {
-        window.location.href="/update_employees" 
-     }
+  function showEmployees() {
+     window.location.href="/show_employees" 
+  }
+  function updateEamployeesDatabase() {
+      window.location.href="/update_employees" 
+   }
 </script>
-{% endblock %}
-
+     {% endblock %}

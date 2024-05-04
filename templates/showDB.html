@@ -9,23 +9,19 @@ Employees_Database
 
 {% block content %}
 <head>
-<style>
-    /* CSS for centering content */
-    #cent{
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
-    }
-</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .relative {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            margin-left: 20px; 
+        }
+    </style>
 </head>
 
-<head>
-    <title>Employees Database</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-
-<h3 align="center">Employees Databases</h3>
-<div id="cent">
+<div class="relative">
+    <h3 style="margin-bottom: 40px; margin-top: 40px;">Employees Databases</h3>
     <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
     <table border="1",align="center", id="employeeTable">
         <tr>
@@ -62,11 +58,11 @@ Employees_Database
         var cell1 = rowElement.insertCell(0);
         cell1.innerHTML = employee.id;
         var cell2 = rowElement.insertCell(1);
-        cell2.innerHTML = employee["First Name"];
+        cell2.innerHTML = employee.first_name;
         var cell3 = rowElement.insertCell(2);
-        cell3.innerHTML = employee["Second Name"];
+        cell3.innerHTML = employee.last_name;
         var cell4 = rowElement.insertCell(3);
-        cell4.innerHTML = employee["Employee ID"];
+        cell4.innerHTML = employee.employee_id;
     }
 
     // Call the getAllAjax() function when the page loads

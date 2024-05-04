@@ -56,7 +56,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
         <div class="form-group">
           <label for="password1">Password</label>
           <input
-            type="text"
+            type="password"
             class="form-control"
             id="password1"
             name="password1"
@@ -66,7 +66,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
         <div class="form-group">
           <label for="password2">Password (Confirm)</label>
           <input
-            type="text"
+            type="password"
             class="form-control"
             id="password2"
             name="password2"
@@ -75,7 +75,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
         </div>
         <br />
         <div style="text-align: center;"> <!-- Aligning the button to the center -->
-            <button type="submit" style="display: inline", id="submit", class="btn btn-primary" onclick="doCreateUsername()">Submit</button>
+            <button type="submit" style="display: inline", id="submit", class="btn btn-primary">Submit</button>
             <button type="button" style="display: inline", id="goTologin", class="btn btn-primary" onclick="GotoLogin()">GoToLogin</button> 
       </div>
     </form>
@@ -84,55 +84,6 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
 <script>
   function GotoLogin(){
     window.location.href="/login"
-  }
-  function doCreateUsername(){
-    var form = document.getElementById('signupForm');
-    var user = {};
-  
-    user.username = form.querySelector('input[name="username"]').value;
-    user.first_name = form.querySelector('input[name="first_name"]').value;
-    user.last_name = form.querySelector('input[name="last_name"]').value;
-    user.password1 = form.querySelector('input[name="password1"]').value;
-  
-    createLoginAjax(user)
-    
-  }
-  function clearForm(){
-    var form = document.getElementById('signupForm');
-
-    user.username = form.querySelector('input[name="username"]').value=''
-    user.first_name = form.querySelector('input[name="first_name"]').value=''
-    user.last_name = form.querySelector('input[name="last_name"]').value=''
-    user.password1 = form.querySelector('input[name="password1"]').value=''
-    user.password2 = form.querySelector('input[name="password2"]').value=''
-  }
-  function doCreate(){
-        var form = document.getElementById('createUpdateForm')
-
-        var book = {}
-       
-        book.title = form.querySelector('input[name="title"]').value
-        book.author = form.querySelector('input[name="author"]').value
-        book.price = form.querySelector('input[name="price"]').value
-        console.log(JSON.stringify(book))
-        createBookAjax(book)
-    }
-  function createLoginAjax(user){
-      $.ajax({
-          url: "/users",
-          method: "POST",
-          data: JSON.stringify(user),
-          dataType: "json",
-          contentType: "application/json; charset=utf-8",
-          success: function(result){
-              console.log(result);
-              user.id = result.id 
-              clearForm()
-          },
-          error: function(xhr, status, error){
-              console.log("Error: " + status + " Message: " + error);
-          }
-      });
   }
 </script>
 {% endblock %}
