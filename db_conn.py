@@ -97,14 +97,14 @@ class database_connection:
         self.closeAll()
         return user
 
-    def check_username_exist(self, username):
+    '''def check_username_exist(self, username):
         cursor = self.getcursor()
         sql = "SELECT username FROM authentication_logins WHERE username = %s"
         values = (username,)
         cursor.execute(sql, values)
         results = cursor.fetchall()
         self.closeAll()
-        return results
+        return results'''
 
     def check_passwrod_match(self, username, password):
         cursor = self.getcursor()
@@ -114,6 +114,32 @@ class database_connection:
         results = cursor.fetchall()
         self.closeAll()
         return results
+    
+    def get_user_by_username(self, username):
+        cursor = self.getcursor()
+        sql = f"SELECT * FROM authentication_logins WHERE username = '{username}'"
+        cursor.execute(sql)
+        result = cursor.fetchone()  # Assuming only one user should be returned
+        self.closeAll()
+
+        if result:
+            return self.convertToDictionary(attkeys_logins, result)
+        else:
+            return None
+
+    def get_user_by_id(self, user_id):  
+        cursor = self.getcursor()
+        sql = f"SELECT * FROM authentication_logins WHERE id = {user_id}"
+        cursor.execute(sql)
+        result = cursor.fetchone()  # Assuming only one user should be returned
+        self.closeAll()
+
+        if result:
+            return self.convertToDictionary(attkeys_logins, result)
+        else:
+            return None
+
+    
 # Instantiate the database_connection class
 db_conn = database_connection()
 
