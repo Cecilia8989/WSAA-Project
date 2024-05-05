@@ -12,7 +12,7 @@ Update Employees Database
             position: relative;
             width: 400px;
             height: 200px;
-            margin-left: 20px; 
+            margin-left: 60px; 
         }
     </style>
 </head>
@@ -23,13 +23,14 @@ Update Employees Database
     <br>
     <button id="showCreateButton" class="btn btn-primary" onclick="showCreate()" style="display: block;">Create</button>
     <br>
-    <fieldset id="fieldset" style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px; display: inline-block;">
+    <fieldset id="fieldset" style="background: #f6f8ff; border: 2px solid #4238ca; width: 800px; padding: 20px; display: inline-block;">
         <table border="1" id="employeeTable">
             <tr>
                 <th><span style="margin: 0 10px;">Id</span></th>
                 <th><span style="margin: 0 10px;">First Name</span></th>
                 <th><span style="margin: 0 10px;">Last Name</span></th>
                 <th><span style="margin: 0 10px;">Employee ID</span></th>
+                <th><span style="margin: 0 10px;">Market</span></th>
             </tr>
         </table>
     </fieldset>
@@ -39,9 +40,10 @@ Update Employees Database
     <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update a</span> Employee</h2>
     <br>
     <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px; color: font-weight: bold;">
-        First name <input type="text" name="first_name" style="color: blue; font-weight: bold;"><br>
-        Second name <input type="text" name="last_name"> <br>
-        Employee id <input type="number" name="employee_id"> <br>
+        First Name <input type="text" name="first_name" style="color: blue; font-weight: bold;"><br>
+        Last Name <input type="text" name="last_name"> <br>
+        Employee ID <input type="text" name="employee_id"> <br>
+        Market <input type="text" name="market"> <br>
     </fieldset>
     <br>
     <button id="doCreateButton" class="btn btn-primary" onclick="doCreate()" style="display: block;">Create</button>
@@ -78,6 +80,8 @@ Update Employees Database
         employee.first_name = form.querySelector('input[name="first_name"]').value;
         employee.last_name = form.querySelector('input[name="last_name"]').value;
         employee.employee_id = form.querySelector('input[name="employee_id"]').value;
+        employee.market = form.querySelector('input[name="market"]').value;
+
 
         createEmployeeAjax(employee)
         showViewAll()
@@ -107,10 +111,9 @@ Update Employees Database
             contentType: "application/json; charset=utf-8",
             success: function(result){
                 console.log(result);
-                employee.id = employee.id
-                addEmployeeToTable(book)
-                showViewAll()
-                
+                employee.id = result.id; // Update the employee ID from the response
+                addEmployeeToTable(employee); // Add the new employee to the table
+                showViewAll(); // Optionally, show the view all section
             },
             error: function(xhr, status, error){
                 console.log("Error: " + status + " Message: " + error);
@@ -129,9 +132,11 @@ Update Employees Database
         cell3.innerHTML = employee.last_name;
         var cell4 = rowElement.insertCell(3);
         cell4.innerHTML = employee.employee_id;
-        var cell5 = rowElement.insertCell(4);
+        var cell4 = rowElement.insertCell(4);
+        cell4.innerHTML = employee.market;
+        var cell5 = rowElement.insertCell(5);
         cell5.innerHTML = '<button class="btn btn-primary btn-space" onclick="showUpdate(this)">Update</button>';
-        var cell6 = rowElement.insertCell(5);
+        var cell6 = rowElement.insertCell(6);
         cell6.innerHTML = '<button class="btn btn-primary btn-space" onclick="doDelete(this)">Delete</button>';
     }
 

@@ -15,7 +15,7 @@ Employees_Database
             position: relative;
             width: 400px;
             height: 200px;
-            margin-left: 20px; 
+            margin-left: 60px; 
         }
     </style>
 </head>
@@ -28,7 +28,8 @@ Employees_Database
             <th><span style="margin: 0 10px;">Id</span></th>
             <th><span style="margin: 0 10px;">First Name</span></th>
             <th><span style="margin: 0 10px;">Last Name</span></th>
-            <th><span style="margin: 0 10px;">Employee ID</span></th>         
+            <th><span style="margin: 0 10px;">Employee ID</span></th>
+            <th><span style="margin: 0 10px;">Market</span></th>          
         </tr>
     </table>
     <br/>
@@ -63,6 +64,8 @@ Employees_Database
         cell3.innerHTML = employee.last_name;
         var cell4 = rowElement.insertCell(3);
         cell4.innerHTML = employee.employee_id;
+        var cell4 = rowElement.insertCell(4);
+        cell4.innerHTML = employee.market;
     }
 
     // Call the getAllAjax() function when the page loads

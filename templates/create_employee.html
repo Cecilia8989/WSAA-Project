@@ -1,0 +1,119 @@
+<!-- More information on CSS positioning can be found at: 
+https://www.w3schools.com/css/css_positioning.asp - fixing position -->
+<!-- More information on CSS positioning can be found at: 
+<!--https://www.w3schools.com/css/css_positioning.asp - padding --> 
+
+{% extends "base.html" %}
+
+{% block title %}
+  Create Employee
+{% endblock %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+  .relative {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin-left: 60px; 
+  }
+</style>
+
+<!-- Start of centered content -->
+<div class="relative" >
+  <h2><span id="createLabel">Create an Employee</h2>
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
+    <form id="createForm" method="POST">
+      <div>
+        <div class="form-group">
+              <label for="first_name">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_name"
+                name="first_name"
+                placeholder="-- Enter First Name -- "
+        />
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            name="last_name"
+            placeholder="-- Enter Second Name --"
+        /> 
+        <div class="form-group">
+          <label for="employee_id">Employee ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="employee_id"
+            name="employee_id"
+            placeholder="-- Enter Employee ID --"
+          />      
+        <div class="form-group">
+          <label for="market">Market</label>
+          <input
+            type="text"
+            class="form-control"
+            id="market"
+            name="market"
+            placeholder="-- Enter Market --"
+          />
+        </div>
+        <div style="margin-top: 60px"> <!-- Aligning the button to the center -->
+            <button type="submit" id="submit", class="btn btn-primary" onclick="doCreateEmployee()">Submit</button>
+       </div>
+      
+    </form>
+</fieldset>
+<div style="margin-top: 60px">
+  <!-- Aligning the button to the center -->
+  <button type="button" id="GoToUP" class="btn btn-primary" onclick="GoToUP()">Return on Update DB</button>
+</div>
+<script>
+
+  function clearFormFields() {
+        // Get the form element
+        var form = document.getElementById('createForm');
+        
+        // Reset the form
+        form.reset();
+  }
+  function GoToUP(){
+    window.location.href="/update_employees"
+  }
+  function doCreateEmployee(){
+    var form = document.getElementById('createForm');
+    var employee = {};
+  
+    employee.first_name = form.querySelector('input[name="first_name"]').value;
+    employee.last_name = form.querySelector('input[name="last_name"]').value;
+    employee.employee_id = form.querySelector('input[name="employee_id"]').value;
+    employee.market = form.querySelector('input[name="market"]').value;
+    console.log(employee);
+  
+    createEmployeeAjax(employee)
+  }
+  function createEmployeeAjax(employee){
+    $.ajax({
+        url: "/employees",
+        method: "POST",
+        data: JSON.stringify(employee),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function(result){
+            console.log(result);
+            employee.id = result.id; // Update the employee ID from the response
+            clearFormFields();
+            window.location.href = "/update_employees";
+        },
+        error: function(xhr, status, error){
+            console.log("Error: " + status + " Message: " + error);
+        }
+    });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+Update Employee
+{% endblock %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+  .relative {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin-left: 60px; 
+  }
+</style>
+
+<!-- Start of centered content -->
+<div class="relative">
+  <h2><span id="createLabel">Update an Employee</span></h2>
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
+    <form id="updateForm" method="POST" action="/update_employee">
+      <div>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first_name"
+            name="first_name"
+            placeholder="-- Enter First Name -- "
+          />
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            name="last_name"
+            placeholder="-- Enter Second Name --"
+          /> 
+        </div>
+        <div class="form-group">
+          <label for="employee_id">Employee ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="employee_id"
+            name="employee_id"
+            placeholder="-- Enter Employee ID --"
+          />      
+        </div>
+        <div class="form-group">
+          <label for="market">Market</label>
+          <input
+            type="text"
+            class="form-control"
+            id="market"
+            name="market"
+            placeholder="-- Enter Market --"
+          />
+        </div>
+        <div style="margin-top: 60px">
+          <!-- Aligning the button to the center -->
+          <button type="submit" id="submit" class="btn btn-primary" onclick="doUpdateEmployee()">Submit</button>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+  <div style="margin-top: 60px">
+    <!-- Aligning the button to the center -->
+    <button type="button" id="GoToUP" class="btn btn-primary" onclick="GoToUP()">Return on Update DB</button>
+  </div>
+</div>
+<script>
+  // Popolare i campi del modulo con i parametri URL
+  var urlParams = new URLSearchParams(window.location.search);
+  document.getElementById("first_name").value = decodeURIComponent(urlParams.get("first_name"));
+  document.getElementById("last_name").value = decodeURIComponent(urlParams.get("last_name"));
+  document.getElementById("employee_id").value = decodeURIComponent(urlParams.get("employee_id"));
+  document.getElementById("market").value = decodeURIComponent(urlParams.get("market"));
+  
+  function GoToUP(){
+    window.location.href="/update_DB";
+  }
+  function doUpdateEmployee(){
+    var form = document.getElementById('updateForm');
+    var employee = {};
+  
+    employee.first_name = form.querySelector('input[name="first_name"]').value;
+    employee.last_name = form.querySelector('input[name="last_name"]').value;
+    employee.employee_id = form.querySelector('input[name="employee_id"]').value;
+    employee.market = form.querySelector('input[name="market"]').value;
+    console.log(employee);
+  
+    UpdateEmployeeAjax(employee)
+  }
+  function UpdateEmployeeAjax(employee){
+    //var book = {"title":"yoto", "author":"momo","price":800}
+    console.log(JSON.stringify(employee));
+    $.ajax({
+        "url": "/employees",
+        "method":"PUT",
+        "data":JSON.stringify(employee),
+        "dataType": "JSON",
+        contentType: "application/json; charset=utf-8",
+        "success":function(result){
+           // console.log(result);
+              
+        },
+        "error":function(xhr,status,error){
+            console.log("error: "+status+" msg:"+error);
+        }
+    });
+}
+  
+</script>
+{% endblock %}

@@ -1,53 +1,79 @@
-from flask import Flask, Blueprint, render_template, request, flash, jsonify
-from db_conn import db_conn as msd
-from config import SecretKey as sk
+
+from flask import Flask, jsonify, request, abort, render_template
+from bookDAO import bookDAO
 
 app = Flask(__name__, static_url_path='', static_folder='.')
-app.config['SECRET_KEY'] = sk.KEY
 
 #app = Flask(__name__)
-logins_table = 'authentication_logins'
-employee_table = "employees"
-
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return "Hello, World!"
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+#curl "http://127.0.0.1:5000/books"
+@app.route('/books')
+def getAll():
+    #print("in getall")
+    results = bookDAO.getAll()
+    return jsonify(results)
 
-@app.route('/sign-up')
-def SignUp():
-    return render_template('sign_up.html')
+#curl "http://127.0.0.1:5000/books/2"
+@app.route('/books/<int:id>')
+def findById(id):
+    foundBook = bookDAO.findByID(id)
 
-@app.route('/logout')
-def logout():
-    return render_template('home.html')
+    return jsonify(foundBook)
 
-@app.route('/employees', methods=['GET', 'POST'])
-def employees():
-    if request.method == 'GET':
-        return msd.getAll(employee_table)   
-    elif request.method == 'POST':
-        employee_id = request.form.get('employee_id')
-        if msd.checkUniqueEmployeeID(employee_id):
-            flash("Username already exists. Please choose a different one.", category="error")
-            return render_template('update_DB.html')  # Ritorna il template per consentire all'utente di correggere l'errore
-        else:
-            # Aggiungi qui la logica per creare un nuovo impiegato nel database
-            flash("Employee created successfully")
-            return render_template('update_DB.html')  # Ritorna il template per informare l'utente che l'impiegato è stato creato
-       
+#curl  -i -H "Content-Type:application/json" -X POST -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books
+@app.route('/books', methods=['POST'])
+def create():
+    
+    if not request.json:
+        abort(400)
+    # other checking 
+    book = {
+        "title": request.json['title'],
+        "author": request.json['author'],
+        "price": request.json['price'],
+    }
+    addedbook = bookDAO.create(book)
+    
+    return jsonify(addedbook)
 
-@app.route('/show_employees')
-def showDB():
-    return render_template('showDB.html')
+#curl  -i -H "Content-Type:application/json" -X PUT -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books/1
+@app.route('/books/<int:id>', methods=['PUT'])
+def update(id):
+    foundBook = bookDAO.findByID(id)
+    if not foundBook:
+        abort(404)
+    
+    if not request.json:
+        abort(400)
+    reqJson = request.json
+    if 'price' in reqJson and type(reqJson['price']) is not int:
+        abort(400)
 
-@app.route('/update_employees')
-def updateDB():
-    return render_template('update_DB.html')
+    if 'title' in reqJson:
+        foundBook['title'] = reqJson['title']
+    if 'author' in reqJson:
+        foundBook['author'] = reqJson['author']
+    if 'price' in reqJson:
+        foundBook['price'] = reqJson['price']
+    bookDAO.update(id,foundBook)
+    return jsonify(foundBook)
+        
+
+    
+
+@app.route('/books/<int:id>' , methods=['DELETE'])
+def delete(id):
+    bookDAO.delete(id)
+    return jsonify({"done":True})
+
+@app.route('/bookviewer' , methods=['GET', 'POST', 'UPDATE', 'DELETE'])
+def bookviewer():
+    return render_template('bookviewer.html')
+
 
 if __name__ == '__main__' :
     app.run(debug= True)

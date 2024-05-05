@@ -2,12 +2,12 @@ import mysql.connector
 from config import DBConfigSQL as cfg
 import json
 
-database = "employee_management"
+database = "employees_management"
 
 logins_table = 'authentication_logins'
 employee_table = "employees"
 
-attkeys_employee=['id','first_name','last_name', "employee_id"]
+attkeys_employee=['id','first_name','last_name', "employee_id", "market"]
 attkeys_logins=['id', 'username','first_name','last_name', "password"]
 
 class database_connection:
@@ -58,13 +58,6 @@ class database_connection:
             currentkey = currentkey + 1 
         return list
     
-    def checkUniqueID(self, user_id):
-        cursor = self.getcursor()
-        sql = f"SELECT employee_id FROM employees WHERE employee_id = {user_id}"
-        cursor.execute(sql,)
-        results = cursor.fetchall()
-        self.closeAll()
-        return results
     
     
     def check_unique_username(self, username):
@@ -74,11 +67,23 @@ class database_connection:
         results = cursor.fetchall()
         self.closeAll()
         return results
+    
+    def check_unique_employee_id(self, employee_id):
+        cursor = self.getcursor()
+        sql = f"SELECT * FROM employees WHERE employee_id = '{employee_id}'"
+        cursor.execute(sql,)
+        results = cursor.fetchone()
+        self.closeAll()
+        if results:
+            return True
+        else:
+            False
 
     def createNewEmployee(self, employee):
         cursor = self.getcursor()
-        sql = "INSERT INTO authentication_logins (first_name, last_name, employee_id) VALUES (%s, %s, %s)"
-        values = (employee.get("first_name"), employee.get("last_name"), employee.get("employee_id"))
+        sql = "INSERT INTO employees (first_name, last_name, employee_id, market) VALUES (%s, %s, %s, %s)"
+        values = (employee.get("first_name"), employee.get("last_name"), employee.get("employee_id"), employee.get("market"))
+        print(values)
         cursor.execute(sql, values)
         self.connection.commit()  
         newid = cursor.lastrowid
@@ -97,23 +102,7 @@ class database_connection:
         self.closeAll()
         return user
 
-    '''def check_username_exist(self, username):
-        cursor = self.getcursor()
-        sql = "SELECT username FROM authentication_logins WHERE username = %s"
-        values = (username,)
-        cursor.execute(sql, values)
-        results = cursor.fetchall()
-        self.closeAll()
-        return results'''
-
-    def check_passwrod_match(self, username, password):
-        cursor = self.getcursor()
-        sql = "SELECT * FROM authentication_logins WHERE username = %s AND password = %s"
-        values = (username, password)
-        cursor.execute(sql, values)
-        results = cursor.fetchall()
-        self.closeAll()
-        return results
+    
     
     def get_user_by_username(self, username):
         cursor = self.getcursor()
@@ -127,24 +116,30 @@ class database_connection:
         else:
             return None
 
-    def get_user_by_id(self, user_id):  
+    def get_user_by_emp_id(self, employee_id):  
         cursor = self.getcursor()
-        sql = f"SELECT * FROM authentication_logins WHERE id = {user_id}"
+        sql = f"SELECT * FROM employee WHERE employee_id = {employee_id}"
         cursor.execute(sql)
-        result = cursor.fetchone()  # Assuming only one user should be returned
+        result = cursor.fetchall()  # Assuming only one user should be returned
         self.closeAll()
 
         if result:
-            return self.convertToDictionary(attkeys_logins, result)
+            return self.convertToDictionary(attkeys_employee, result)
         else:
             return None
 
+    def update_Employee(self, id, employee):
+        cursor = self.getcursor()
+        sql="update employee set first_name= %s,last_name=%s, employee_id=%s, market=%s where id = %s"
+        print(f"update employee {employee}")
+        values = (employee.get("first_name"), employee.get("last_name"), employee.get("employee_id"),employee.get("market"), id)
+        cursor.execute(sql, values)
+        self.connection.commit()
+        self.closeAll()
+    
     
 # Instantiate the database_connection class
 db_conn = database_connection()
 
-result = db_conn.check_passwrod_match('asdfasD78#', 'asdfasD78#')
-if result:
-  print(result)
-else:
-   print("No result for the user")
+result = db_conn.check_unique_employee_id('asdfasD78#')
+print(result)
