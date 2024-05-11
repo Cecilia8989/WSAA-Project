@@ -118,9 +118,9 @@ class database_connection:
 
     def get_user_by_emp_id(self, employee_id):  
         cursor = self.getcursor()
-        sql = f"SELECT * FROM employee WHERE employee_id = {employee_id}"
+        sql = f"SELECT * FROM employees WHERE employee_id = '{employee_id}'"
         cursor.execute(sql)
-        result = cursor.fetchall()  # Assuming only one user should be returned
+        result = cursor.fetchone()  # Assuming only one user should be returned
         self.closeAll()
 
         if result:
@@ -128,12 +128,31 @@ class database_connection:
         else:
             return None
 
-    def update_Employee(self, id, employee):
+    def find_by_id(self, id):
         cursor = self.getcursor()
-        sql="update employee set first_name= %s,last_name=%s, employee_id=%s, market=%s where id = %s"
-        print(f"update employee {employee}")
+        sql = f"SELECT * FROM employees WHERE id = {id}"
+        cursor.execute(sql)
+        result = cursor.fetchone()  # Assuming only one user should be returned
+        self.closeAll()
+
+        if result:
+            return self.convertToDictionary(attkeys_employee, result)
+        else:
+            return None
+
+
+    def update_employee(self, id, employee):
+        cursor = self.getcursor()
+        sql="update employees set first_name= %s,last_name=%s, employee_id=%s, market=%s where id = %s"
         values = (employee.get("first_name"), employee.get("last_name"), employee.get("employee_id"),employee.get("market"), id)
         cursor.execute(sql, values)
+        self.connection.commit()
+        self.closeAll()
+        
+    def delete_employee(self, id):
+        cursor = self.getcursor()
+        sql=f"delete from employees where id ='{id}'"
+        cursor.execute(sql)
         self.connection.commit()
         self.closeAll()
     
@@ -141,5 +160,5 @@ class database_connection:
 # Instantiate the database_connection class
 db_conn = database_connection()
 
-result = db_conn.check_unique_employee_id('asdfasD78#')
-print(result)
+#result = db_conn.delete_employee(15)
+#print(result)

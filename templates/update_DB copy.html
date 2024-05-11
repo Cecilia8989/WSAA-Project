@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Update Employees Database
+Home
 {% endblock %}
 
 {% block content %}
@@ -34,16 +34,25 @@ Update Employees Database
             </tr>
         </table>
     </fieldset>
-</div>
-<br>
+    <div style="margin-top: 60px">
+      <!-- Aligning the button to the center -->
+      <button type="button" id="GoToUP" class="btn btn-primary" onclick="GoToHome()">Home</button>
+    </div>
+    <script>
+    
+    function GoToHome(){
+          window.location.href="/"
+        }
+    function showAll() {
+        document.getElementById('Table1').style.display="block"
+    }
 
-<script>
     function showCreate(){
         window.location.href="/create_employees" 
     }
     
     function getAllAjax(){
-        
+    
         $.ajax({
             "url": "/employees",
             "method":"GET",
@@ -67,8 +76,8 @@ Update Employees Database
         employee_to_update.employee_id = rowElement.cells[3].firstChild.textContent
         employee_to_update.market = rowElement.cells[4].firstChild.textContent
         return employee_to_update;
-        console.log(employee_to_update);
     }
+
     function showUpdate(rowElement) {
         var employeeToUpdate = getEmployeeFromRow(rowElement);
         console.log(employeeToUpdate);
@@ -80,10 +89,38 @@ Update Employees Database
                                 "&employee_id=" + encodeURIComponent(employeeToUpdate.employee_id) +
                                 "&market=" + encodeURIComponent(employeeToUpdate.market);
     }
+
+    function doDelete(rowElement) {
+        var employeeToDelete = rowElement.getAttribute('id');
+        console.log("Employee to delete: ", employeeToDelete);
+        deleteAjax(employeeToDelete, rowElement);
+    }
     
+    function deleteAjax(employeeToDelete, rowElement) {
+        $.ajax({
+            url: "/employees",
+            method: "DELETE",
+            data: JSON.stringify({ id: employeeToDelete }), // Stringify the data object
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(result) {
+                console.log(result);
+                // Rimuovi la riga dalla tabella dopo l'eliminazione
+                var tableElement = document.getElementById('employeeTable');
+                var rowIndex = rowElement.rowIndex;
+                tableElement.deleteRow(rowIndex);
+                location.reload()
+            },
+            error: function(xhr, status, error) {
+                console.log("error: " + status + " msg:" + error);
+            }
+        });
+    }
 
     function addEmployeeToTable(employee){
         var tableElement = document.getElementById('employeeTable');
+        var rowCount = tableElement.rows.length;
+        var rowCount = tableElement.rows.length;
         var rowElement = tableElement.insertRow(-1);
         rowElement.setAttribute('id', employee.id);
         var cell1 = rowElement.insertCell(0);
@@ -98,9 +135,9 @@ Update Employees Database
         cell4.innerHTML = employee.market;
         var cell5 = rowElement.insertCell(5);
         var cell5 = rowElement.insertCell(5);
-cell5.innerHTML = '<button class="btn btn-primary btn-space" onclick="showUpdate(this.parentNode.parentNode)">Update</button>';
+        cell5.innerHTML = '<button class="btn btn-primary btn-space" onclick="showUpdate(this.parentNode.parentNode)">Update</button>';
         var cell6 = rowElement.insertCell(6);
-        cell6.innerHTML = '<button class="btn btn-primary btn-space" onclick="doDelete(this)">Delete</button>';
+        cell6.innerHTML = '<button class="btn btn-primary btn-space" onclick="doDelete(this.parentNode.parentNode)">Delete</button>';
     }
 
     // Call the getAllAjax() function when the page loads

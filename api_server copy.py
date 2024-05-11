@@ -1,9 +1,9 @@
+# Importing required modules
 from flask import Flask, render_template, request, flash, jsonify, abort, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user, UserMixin
 from db_conn import db_conn as msd
 from config import SecretKey as sk
 from werkzeug.security import generate_password_hash, check_password_hash
-import sys
 
 # Define tables and attributes
 logins_table = 'authentication_logins'
@@ -13,7 +13,9 @@ attkeys_logins = ['id', 'username', 'first_name', 'last_name', "password"]
 
 # Initialize Flask app
 app = Flask(__name__, static_url_path='', static_folder='.')
-app.config['SECRET_KEY'] = sk.KEY
+app.config['SECRET_KEY'] = sk.KEY  # Setting secret key for sessions
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Setting SameSite attribute for session cookies
+app.config['SESSION_COOKIE_SECURE'] = True  # Ensuring session cookies are secure
 
 # Initialize Flask-Login
 login_manager = LoginManager(app)
@@ -32,69 +34,94 @@ def load_user(user_id):
 
 # Routes
 
+# Route for home
 @app.route('/')
 def index():
-    return render_template('home.html', user=current_user)
+    return render_template('home.html', user=current_user)  
 
+# Route for logging out
 @app.route('/logout')
 def logout():
+    # Check if the current user is authenticated
     if current_user.is_authenticated:
-        logout_user()
-        flash("You have been logged out")
+        logout_user()  # Log out the user
+        flash("You have been logged out")  
+    # Redirect to the login page
     return redirect(url_for('login'))
 
-@app.route('/employees', methods=['GET', 'POST', 'PUT'])
+# Route for managing employees)
+@app.route('/employees', methods=['GET', 'POST', 'PUT', 'DELETE'])
+# Redirect to the login page
+# Ensure login is required to access this route
+@login_required  
 def employees():
     if request.method == 'GET':
-        # Assuming msd.getAll returns a list of employees
-        return jsonify(msd.getAll(employee_table, attkeys_employee))
+        # Return all employees as JSON
+        return jsonify(msd.getAll(employee_table, attkeys_employee))  
     
     elif request.method == 'POST':
-        if not request.json or not all(key in request.json for key in ['first_name', 'last_name', 'employee_id', 'market']):
-            abort(400)  # Bad request if required fields are missing
-            
+        # Extract employee data from JSON request
         employee = {
             "first_name": request.json['first_name'],
             "last_name": request.json['last_name'],
             "employee_id": request.json['employee_id'],
             "market": request.json['market'],
         }
-        added_employee = msd.createNewEmployee(employee)
-        return jsonify(added_employee), 201  # 201 Created
-    
-    elif request.method == 'PUT':
-        if not request.json or not all(key in request.json for key in ['first_name', 'last_name', 'employee_id', 'market']):
-            abort(400)
-            
+        # Create a new employee
+        added_employee = msd.createNewEmployee(employee)  
+        # Return the newly created employee with HTTP status 201 (Created)
+        return jsonify(added_employee), 201 
+
+    if request.method == 'PUT':
+        # Extract employee data from JSON request for updating
         employee = {
+            "id": request.json['id'],
             "first_name": request.json['first_name'],
             "last_name": request.json['last_name'],
             "employee_id": request.json['employee_id'],
             "market": request.json['market'],
         }
         
-        found_employee = msd.get_user_by_emp_id(employee["employee_id"])
+        # Find the employee in the database by ID
+        found_employee = msd.find_by_id(employee["id"])
+        
+        # If employee not found, abort with 404 (Not Found)
         if not found_employee:
-            abort(404)  # Not found
+            abort(404)
         
         # Update the found employee with the new data
-        updated_employee = msd.updateEmployee(found_employee['id'], employee)
-        return jsonify(updated_employee)
-    
-    
-'''@app.route('/employees/<int:id>', methods=['PUT'])
-def update_employees():
-    if not request.json:
-            abort(400)
-        employee = {
-            "first_name": request.json['first_name'],
-            "last_name": request.json['last_name'],
-            "employee_id": request.json['employee_id'],
-            "market": request.json['market'],
-        }
-        added_employee = msd.updateNewEmployee()
-        return jsonify(added_employee)'''
-    
+        updated_employee = msd.update_employee(found_employee['id'], employee)
+        
+        # Flash a success message indicating the update
+        flash(f"Employee with ID = {found_employee['id']} - First Name = {employee['first_name']} updated", category='success')
+        # Return the updated employee data as JSON
+        return jsonify(updated_employee) 
+
+    elif request.method == 'DELETE':
+        # Check if JSON data is present in the request
+        if not request.json:
+            abort(400) 
+            
+        # Get the employee ID from the JSON data
+        found_employee_id = request.json.get('id')
+        
+        # Check if the employee ID is provided
+        if not found_employee_id:
+            abort(400)  
+        
+               
+        # Delete the employee from the database
+        msd.delete_employee(found_employee_id)
+        
+        # Flash a success message indicating the deletion of the employee
+        flash(f"Employee with ID = {found_employee_id} deleted", category='success')
+        # Return a JSON response indicating successful deletion
+        return jsonify({"done":True})
+
+    # Redirect to the updateDB route if the request method is neither PUT nor DELETE
+    return redirect(url_for('updateDB'))  
+
+ 
         
 @app.route('/show_employees')
 def showDB():
@@ -118,16 +145,15 @@ def create_employees():
     if request.method == 'POST':
         employee_id = request.form.get('employee_id')
         result = msd.check_unique_employee_id(employee_id)
-        print(result)
+        
         if result == True:
             flash(f"Employee ID {employee_id} already exists. Please choose a different one.", category="error")
             return render_template('create_employee.html', user=current_user)
         
         flash('Employee created successfully.', category='success')
-   
+
     return render_template('create_employee.html', user=current_user)
 
-from flask import request, render_template
 @app.route('/update_employee', methods=['GET', 'POST', 'PUT'])
 def update_employee():
     # Ottieni i dati dell'impiegato dalla richiesta
@@ -150,8 +176,8 @@ def login():
             return render_template('login.html')
 
         user = User()
-        user.id = user_data['id']  # Set user ID
-        login_user(user, remember=True)  # Log in the user
+        user.id = user_data['id']
+        login_user(user, remember=True)
 
         flash('Login successful!', 'success')
         return redirect(url_for('index'))
@@ -170,7 +196,7 @@ def signin():
         
         if msd.check_unique_username(username):
             flash("Username already exists. Please choose a different one.", category="error")
-            return render_template('sign_up.html')  # Render the sign-up template again
+            return render_template('sign_up.html')
         
         if password != password2:
             flash("Passwords do not match", category="error")
@@ -191,11 +217,9 @@ def signin():
                         'password': password}
             msd.create_new_login(new_user)
             flash(f"User {username} successfully created", category='success')
-            return redirect(url_for('index'))  # Redirect to the home page
+            return redirect(url_for('login'))
         
     return render_template('sign_up.html', user=current_user)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

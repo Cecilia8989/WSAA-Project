@@ -6,7 +6,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
 {% extends "base.html" %}
 
 {% block title %}
-  Create Employee
+Home
 {% endblock %}
 
 {% block content %}
@@ -64,7 +64,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
           />
         </div>
         <div style="margin-top: 60px"> <!-- Aligning the button to the center -->
-            <button type="submit" id="submit", class="btn btn-primary" onclick="doCreateEmployee()">Submit</button>
+            <button type="button" id="submit", class="btn btn-primary" onclick="doCreateEmployee()">Submit</button>
        </div>
       
     </form>
@@ -75,15 +75,8 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
 </div>
 <script>
 
-  function clearFormFields() {
-        // Get the form element
-        var form = document.getElementById('createForm');
-        
-        // Reset the form
-        form.reset();
-  }
   function GoToUP(){
-    window.location.href="/update_employees"
+    window.location.href="/update_DB"
   }
   function doCreateEmployee(){
     var form = document.getElementById('createForm');
@@ -93,11 +86,15 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
     employee.last_name = form.querySelector('input[name="last_name"]').value;
     employee.employee_id = form.querySelector('input[name="employee_id"]').value;
     employee.market = form.querySelector('input[name="market"]').value;
-    console.log(employee);
+    
+    // Log dei valori dei campi dell'employee
+    console.log("Dati dei campi dell'employee:", employee);
   
     createEmployeeAjax(employee)
-  }
-  function createEmployeeAjax(employee){
+}
+
+function createEmployeeAjax(employee){
+    console.log("Dati dell'employee passati a createEmployeeAjax:", employee); // Log dei dati dell'employee
     $.ajax({
         url: "/employees",
         method: "POST",
@@ -105,15 +102,18 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function(result){
-            console.log(result);
-            employee.id = result.id; // Update the employee ID from the response
-            clearFormFields();
-            window.location.href = "/update_employees";
+            console.log("Risultato della richiesta AJAX:", result);
+            employee.id = result.id; // Aggiorna l'ID dell'employee dalla risposta
+            location.reload()
+            GoToUP()
         },
         error: function(xhr, status, error){
-            console.log("Error: " + status + " Message: " + error);
+            console.error("Errore nella richiesta AJAX:", error);
+            console.log("XHR object:", xhr);
+            GoToUP()
         }
     });
+    GoToUP()
 }
 </script>
 {% endblock %}

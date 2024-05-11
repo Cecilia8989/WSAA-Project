@@ -33,9 +33,17 @@ Employees_Database
         </tr>
     </table>
     <br/>
-</div>
+</fieldset>
+    <div style="margin-top: 60px">
+        <!-- Aligning the button to the center -->
+        <button type="button" id="GoToUP" class="btn btn-primary" onclick="GoToHome()">Home</button>
+      </div>
+      <script>
+        
+    function GoToHome(){
+            window.location.href="/"
+          }
 
-<script>
     function getAllAjax(){
         $.ajax({
             "url": "/employees",

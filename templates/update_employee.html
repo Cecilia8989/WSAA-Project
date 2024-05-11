@@ -19,7 +19,7 @@ Update Employee
 <div class="relative">
   <h2><span id="createLabel">Update an Employee</span></h2>
   <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
-    <form id="updateForm" method="POST" action="/update_employee">
+    <form id="updateForm" method="POST">
       <div>
         <div class="form-group">
           <label for="first_name">First Name</label>
@@ -63,7 +63,7 @@ Update Employee
         </div>
         <div style="margin-top: 60px">
           <!-- Aligning the button to the center -->
-          <button type="submit" id="submit" class="btn btn-primary" onclick="doUpdateEmployee()">Submit</button>
+          <button type="button" id="submit" class="btn btn-primary" onclick="doUpdateEmployee()">Submit</button>
         </div>
       </div>
     </form>
@@ -88,31 +88,36 @@ Update Employee
     var form = document.getElementById('updateForm');
     var employee = {};
   
+    employee.id =  decodeURIComponent(urlParams.get("id"))
     employee.first_name = form.querySelector('input[name="first_name"]').value;
     employee.last_name = form.querySelector('input[name="last_name"]').value;
     employee.employee_id = form.querySelector('input[name="employee_id"]').value;
     employee.market = form.querySelector('input[name="market"]').value;
     console.log(employee);
-  
+    
     UpdateEmployeeAjax(employee)
   }
   function UpdateEmployeeAjax(employee){
     //var book = {"title":"yoto", "author":"momo","price":800}
-    console.log(JSON.stringify(employee));
+    console.log("Updating employee:", JSON.stringify(employee)); // Aggiungi questo console.log per verificare i dati dell'impiegato che viene aggiornato
+    console.log("Employee data:", employee); // Visualizza i dati dell'impiegato prima di inviare la richiesta AJAX
+    
     $.ajax({
         "url": "/employees",
         "method":"PUT",
         "data":JSON.stringify(employee),
         "dataType": "JSON",
         contentType: "application/json; charset=utf-8",
-        "success":function(result){
-           // console.log(result);
-              
+        "success": function(result) {
+            console.log("Update successful:", result); // Visualizza il risultato dell'aggiornamento dopo il successo
+            GoToUP()
+            
         },
-        "error":function(xhr,status,error){
-            console.log("error: "+status+" msg:"+error);
+        "error": function(xhr,status,error) {
+            console.log("Error occurred during update:", status, error); // Visualizza l'errore se l'aggiornamento fallisce
+            console.log("XHR object:", xhr); // Visualizza l'oggetto XHR per ulteriori dettagli
         }
-    });
+    }); 
 }
   
 </script>
