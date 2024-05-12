@@ -1,3 +1,8 @@
+<!-- Author: Cecilia pastore -->
+<!-- update_employee.html -->
+<!-- form to update employee and perform PUT crud operation through ajax-->
+
+<!-- extends of the base template for the navigation bar -->
 {% extends "base.html" %}
 
 {% block title %}
@@ -7,6 +12,7 @@ Update Employee
 {% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
+  /* CSS styles for positioning */
   .relative {
       position: relative;
       width: 400px;
@@ -17,10 +23,12 @@ Update Employee
 
 <!-- Start of centered content -->
 <div class="relative">
+  <!-- Title -->
   <h2><span id="createLabel">Update an Employee</span></h2>
   <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
     <form id="updateForm" method="POST">
       <div>
+        <!-- Form inputs for updating employee data -->
         <div class="form-group">
           <label for="first_name">First Name</label>
           <input
@@ -62,28 +70,31 @@ Update Employee
           />
         </div>
         <div style="margin-top: 60px">
-          <!-- Aligning the button to the center -->
+          <!-- Submit button -->
           <button type="button" id="submit" class="btn btn-primary" onclick="doUpdateEmployee()">Submit</button>
         </div>
       </div>
     </form>
   </fieldset>
+  <!-- Button to return to the Update DB page -->
   <div style="margin-top: 60px">
-    <!-- Aligning the button to the center -->
     <button type="button" id="GoToUP" class="btn btn-primary" onclick="GoToUP()">Return on Update DB</button>
   </div>
 </div>
 <script>
-  // Popolare i campi del modulo con i parametri URL
+  // Populate the form fields with URL parameters
   var urlParams = new URLSearchParams(window.location.search);
   document.getElementById("first_name").value = decodeURIComponent(urlParams.get("first_name"));
   document.getElementById("last_name").value = decodeURIComponent(urlParams.get("last_name"));
   document.getElementById("employee_id").value = decodeURIComponent(urlParams.get("employee_id"));
   document.getElementById("market").value = decodeURIComponent(urlParams.get("market"));
   
+  // Function to redirect to the Update DB page
   function GoToUP(){
     window.location.href="/update_DB";
   }
+  
+  // Function to update an employee via AJAX
   function doUpdateEmployee(){
     var form = document.getElementById('updateForm');
     var employee = {};
@@ -97,27 +108,35 @@ Update Employee
     
     UpdateEmployeeAjax(employee)
   }
+  
+  // Function to perform AJAX update operation
   function UpdateEmployeeAjax(employee){
-    //var book = {"title":"yoto", "author":"momo","price":800}
-    console.log("Updating employee:", JSON.stringify(employee)); // Aggiungi questo console.log per verificare i dati dell'impiegato che viene aggiornato
-    console.log("Employee data:", employee); // Visualizza i dati dell'impiegato prima di inviare la richiesta AJAX
+    console.log("Updating employee:", JSON.stringify(employee));
+    console.log("Employee data:", employee);
     
     $.ajax({
-        "url": "/employees",
-        "method":"PUT",
-        "data":JSON.stringify(employee),
-        "dataType": "JSON",
-        contentType: "application/json; charset=utf-8",
-        "success": function(result) {
-            console.log("Update successful:", result); // Visualizza il risultato dell'aggiornamento dopo il successo
-            GoToUP()
-            
-        },
-        "error": function(xhr,status,error) {
-            console.log("Error occurred during update:", status, error); // Visualizza l'errore se l'aggiornamento fallisce
-            console.log("XHR object:", xhr); // Visualizza l'oggetto XHR per ulteriori dettagli
-        }
-    }); 
+      // URL to send the AJAX request for updating an employee
+      "url": "/employees",
+      "method": "PUT",
+      // Data to send in the request body, serialized as JSON
+      "data": JSON.stringify(employee),
+      // Expected data type of the response
+      "dataType": "JSON",
+      // Content type of the data sent to the server
+      "contentType": "application/json; charset=utf-8",
+      // Function to execute if the request succeeds
+      "success": function(result) {
+          // Log success message and call GoToUP() function
+          console.log("Update successful:", result);
+          GoToUP();
+      },
+      // Function to execute if the request fails
+      "error": function(xhr, status, error) {
+          // Log error message and XHR object for debugging
+          console.log("Error occurred during update:", status, error);
+          console.log("XHR object:", xhr);
+      }
+  });
 }
   
 </script>

@@ -1,13 +1,20 @@
+<!-- Author: Cecilia pastore -->
+<!-- update_DB.html -->
+<!-- Show the database and perform multiple CRUD operarion through ajax-->
+
+<!-- extends of the base template for the navigation bar -->
 {% extends "base.html" %}
 
 {% block title %}
-Update Employees Database
+Update_DB
 {% endblock %}
 
 {% block content %}
 <head>
+    <!-- Importing jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
+        /* CSS styles for positioning */
         .relative {
             position: relative;
             width: 400px;
@@ -17,12 +24,14 @@ Update Employees Database
     </style>
 </head>
 
-
 <div id="Table1", class = relative>
+    <!-- Title -->
     <h3 id="title">Employees Databases</h3>
     <br>
+    <!-- Button to create new employees -->
     <button id="showCreateButton" class="btn btn-primary" onclick="showCreate()" style="display: block;">Create</button>
     <br>
+    <!-- Table to display employee data -->
     <fieldset id="fieldset" style="background: #f6f8ff; border: 2px solid #4238ca; width: 800px; padding: 20px; display: inline-block;">
         <table border="1" id="employeeTable">
             <tr>
@@ -31,95 +40,104 @@ Update Employees Database
                 <th><span style="margin: 0 10px;">Last Name</span></th>
                 <th><span style="margin: 0 10px;">Employee ID</span></th>
                 <th><span style="margin: 0 10px;">Market</span></th>
+                <th colspan="2">Actions</th> <!-- Added colspan for merged cells -->
             </tr>
         </table>
     </fieldset>
-</div>
-<br>
-<div id='createUpdateForm' class="relative" style="display: none">
-    <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update a</span> Employee</h2>
-    <br>
-    <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px; color: font-weight: bold;">
-        First Name <input type="text" name="first_name" style="color: blue; font-weight: bold;"><br>
-        Last Name <input type="text" name="last_name"> <br>
-        Employee ID <input type="text" name="employee_id"> <br>
-        Market <input type="text" name="market"> <br>
-    </fieldset>
-    <br>
-    <button id="doCreateButton" class="btn btn-primary" onclick="doCreate()" style="display: block;">Create</button>
-    <button id="doUpdateButton" class="btn btn-primary" onclick="doUpdate()" style="display: block;">Update</button>
-</div>
+    <!-- Button to return to the home page -->
+    <div style="margin-top: 60px">
+      <button type="button" id="GoToUP" class="btn btn-primary" onclick="GoToHome()">Home</button>
+    </div>
+    <script>
+    
+    // Function to redirect to the home page
+    function GoToHome(){
+          window.location.href="/"
+        }
 
-<script>
+    // Function to redirect to the page for creating new employees
     function showCreate(){
-        document.getElementById('Table1').style.display="none"
-        document.getElementById('createUpdateForm').style.display="block"
-
-        document.getElementById('createLabel').style.display="inline"
-        document.getElementById('updateLabel').style.display="none"
-
-        document.getElementById('doCreateButton').style.display="block"
-        document.getElementById('doUpdateButton').style.display="none"
-
+        window.location.href="/create_employees" 
     }
-    function showViewAll(){
-        document.getElementById('Table1').style.display="block"
-        document.getElementById('createUpdateForm').style.display="None"
-
-        document.getElementById('createLabel').style.display="inline"
-        document.getElementById('updateLabel').style.display="none"
-
-        document.getElementById('doCreateButton').style.display="block"
-        document.getElementById('doUpdateButton').style.display="none"
-
-    }
-    function doCreate(){
-        var form = document.getElementById('createUpdateForm');
-        var employee = {};
-
-        employee.first_name = form.querySelector('input[name="first_name"]').value;
-        employee.last_name = form.querySelector('input[name="last_name"]').value;
-        employee.employee_id = form.querySelector('input[name="employee_id"]').value;
-        employee.market = form.querySelector('input[name="market"]').value;
-
-
-        createEmployeeAjax(employee)
-        showViewAll()
-    }
+    
+    // Function to fetch all employees data via AJAX
     function getAllAjax(){
-        
+    
         $.ajax({
-            "url": "/employees",
-            "method":"GET",
-            "dataType": "json",
-            "success":function(result){
+            // URL to send the AJAX request for fetching employees
+            url: "/employees",
+            method: "GET",
+            dataType: "json",
+            // Function to execute if the request succeeds
+            success: function(result) {
+                // Iterate through each employee in the result and add to the table
                 result.forEach(function(employee) {
                     addEmployeeToTable(employee);
                 });
             },
-            "error":function(xhr,status,error){
-                console.log("error: "+status+" msg:"+error);
+            // Function to execute if the request fails
+            error: function(xhr, status, error) {
+                console.log("error: " + status + " msg:" + error);
             }
         });
     }
-    function createEmployeeAjax(employee){
+    
+    // Function to extract employee data from a table row
+    function getEmployeeFromRow(rowElement){
+           
+        var employeeToUpdate = {}
+        employeeToUpdate.id  = rowElement.getAttribute('id')
+        employeeToUpdate.first_name = rowElement.cells[1].firstChild.textContent
+        employeeToUpdate.last_name = rowElement.cells[2].firstChild.textContent
+        employeeToUpdate.employee_id = rowElement.cells[3].firstChild.textContent
+        employeeToUpdate.market = rowElement.cells[4].firstChild.textContent
+        return employeeToUpdate;
+    }
+
+    // Function to redirect to the update_employee page with employee data as URL parameters
+    function showUpdate(rowElement) {
+        var employeeToUpdate = getEmployeeFromRow(rowElement);
+        console.log(employeeToUpdate);
+    
+        // Redirect to the update_employee page with the employee data as URL parameters
+        window.location.href = "/update_employee?id=" + employeeToUpdate.id + 
+                                "&first_name=" + encodeURIComponent(employeeToUpdate.first_name) +
+                                "&last_name=" + encodeURIComponent(employeeToUpdate.last_name) +
+                                "&employee_id=" + encodeURIComponent(employeeToUpdate.employee_id) +
+                                "&market=" + encodeURIComponent(employeeToUpdate.market);
+    }
+
+    // Function to delete an employee via AJAX
+    function doDelete(rowElement) {
+        var employeeToDelete = rowElement.getAttribute('id');
+        console.log("Employee to delete: ", employeeToDelete);
+        deleteAjax(employeeToDelete, rowElement);
+    }
+    
+    // Function to perform AJAX delete operation
+    function deleteAjax(employeeToDelete, rowElement) {
         $.ajax({
             url: "/employees",
-            method: "POST",
-            data: JSON.stringify(employee),
+            method: "DELETE",
+            // Stringify the data object
+            data: JSON.stringify({ id: employeeToDelete }), 
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            success: function(result){
+            success: function(result) {
                 console.log(result);
-                employee.id = result.id; // Update the employee ID from the response
-                addEmployeeToTable(employee); // Add the new employee to the table
-                showViewAll(); // Optionally, show the view all section
+                // Remove the row from the table after deletion
+                var tableElement = document.getElementById('employeeTable');
+                var rowIndex = rowElement.rowIndex;
+                tableElement.deleteRow(rowIndex);
+                location.reload()
             },
-            error: function(xhr, status, error){
-                console.log("Error: " + status + " Message: " + error);
+            error: function(xhr, status, error) {
+                console.log("error: " + status + " msg:" + error);
             }
         });
     }
+
+    // Function to add employee data to the table
     function addEmployeeToTable(employee){
         var tableElement = document.getElementById('employeeTable');
         var rowElement = tableElement.insertRow(-1);
@@ -132,12 +150,12 @@ Update Employees Database
         cell3.innerHTML = employee.last_name;
         var cell4 = rowElement.insertCell(3);
         cell4.innerHTML = employee.employee_id;
-        var cell4 = rowElement.insertCell(4);
-        cell4.innerHTML = employee.market;
-        var cell5 = rowElement.insertCell(5);
-        cell5.innerHTML = '<button class="btn btn-primary btn-space" onclick="showUpdate(this)">Update</button>';
-        var cell6 = rowElement.insertCell(6);
-        cell6.innerHTML = '<button class="btn btn-primary btn-space" onclick="doDelete(this)">Delete</button>';
+        var cell5 = rowElement.insertCell(4);
+        cell5.innerHTML = employee.market;
+        var cell6 = rowElement.insertCell(5); // Action cell
+        cell6.innerHTML = '<button class="btn btn-primary btn-space" onclick="showUpdate(this.parentNode.parentNode)">Update</button>';
+        var cell7 = rowElement.insertCell(6); // Action cell
+        cell7.innerHTML = '<button class="btn btn-primary btn-space" onclick="doDelete(this.parentNode.parentNode)">Delete</button>';
     }
 
     // Call the getAllAjax() function when the page loads

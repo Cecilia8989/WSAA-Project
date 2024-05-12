@@ -1,3 +1,8 @@
+<!-- Author: Cecilia astore -->
+<!-- Home.html -->
+<!-- Mian page who is presented the API structure -->
+
+<!-- extends of the base template for the navigation bar -->
 {% extends "base.html" %}
 
 {% block title %}
@@ -6,36 +11,56 @@ Home
 
 {% block content %}
 
+<!-- Main content container -->
+<div style="position: relative; text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: 60px">
+  <h2 style="color: #4238ca; margin-bottom: 40px;">Welcome to Cecilia Pastore's Project</h2>
+  <p style="font-size: 18px;">A showcase of a crafted <span style="font-weight: bold;">RESTful API</span> developed for the Web Service and Application course.</p>
+  <p style="font-size: 16px;">This API streamlines user authentication processes, offering seamless SignIn, login, and logout functionalities. Unauthenticated users have the privilege of viewing the "employees" database contents, while authenticated users gain comprehensive access to execute CRUD operations on the dataset.</p>
+  <p style="font-size: 16px;">For effortless navigation, utilize the intuitive top bar interface designed to enhance the user experience throughout the API.</p>
+</div>
+
+<!-- CSS styles for the container -->
 <style>
   .relative {
       position: relative;
-      width: 400px;
-      height: 200px;
+      width: 800px;
+      height: 400px;
       margin-left: 60px; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
 </style>
 
-<!-- Start of centered content -->
+<!-- Class the class previously defined -->
 <div class="relative">
-  <h3 style="margin-bottom: 40px; margin-top: 40px;">Select your action</h3>
+  <!-- Subtitle -->
+  <h3 style="align: center; margin-bottom: 40px; margin-top: 40px;">Select your action</h3>
+  <!-- Form container -->
   <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px; color: font-weight: bold;">
     <form method="POST">
+      <!-- Form content -->
       <div>
-        
-        <div style="text-align: center;"> <!-- Allineamento del pulsante al centro -->
+        <!-- Button container (centered) -->
+        <div style="text-align: center;"> 
             <button name="Employee" class="btn btn-primary" type="button" onclick="showEmployees()">Show<br>Employee-Database</button>
-            <button name="UpdateEmployee" class="btn btn-primary" type="button" onclick="updateEamployeesDatabase()">Update the Database<br><span style="font-size: 14px;">(Authentication Needed)</span></button>
-
+            <button name="UpdateEmployee" class="btn btn-primary" type="button" onclick="updateEmployeesDatabase()">Update the Database<br><span style="font-size: 14px;">(Authentication Needed)</span></button>
+        </div>
       </div>
     </form>
   </fieldset>
 </div>
+
+<!-- JavaScript functions -->
 <script>
+  // Function to navigate to show employee page 
   function showEmployees() {
-     window.location.href="/show_employees" 
+     window.location.href="/show_employees"; 
   }
-  function updateEamployeesDatabase() {
-      window.location.href="/update_DB" 
+  // Function to navigate to update employee page 
+  function updateEmployeesDatabase() {
+      window.location.href="/update_DB"; 
    }
 </script>
-     {% endblock %}
+
+{% endblock %}

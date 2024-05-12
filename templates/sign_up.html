@@ -1,17 +1,21 @@
-<!-- More information on CSS positioning can be found at: 
-https://www.w3schools.com/css/css_positioning.asp - fixing position -->
-<!-- More information on CSS positioning can be found at: 
-<!--https://www.w3schools.com/css/css_positioning.asp - padding --> 
+<!-- Author: Cecilia pastore -->
+<!-- sign_up.html -->
+<!-- Signin form - POST is performed in the api_server. py-->
+<!-- Main references: https://github.com/techwithtim/Flask-Web-App-Tutorial -->
 
+<!-- Extends the base template for the navigation bar -->
 {% extends "base.html" %}
 
+<!-- Title of the page -->
 {% block title %}
   Sign up
 {% endblock %}
 
 {% block content %}
+<!-- Importing jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style>
+  /* CSS styles for positioning */
   .relative {
       position: relative;
       width: 400px;
@@ -21,11 +25,14 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
 </style>
 
 <!-- Start of centered content -->
-<div class="relative" >
+<div class="relative">
+  <!-- Sign-up form title -->
   <h3 style="margin-bottom: 40px; margin-top: 40px;">Sign Up</h3>
+  <!-- Form container -->
   <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 600px; padding: 20px">
     <form id="signupForm" method="POST">
       <div>
+        <!-- Username field -->
         <div class="form-group">
             <label for="username">Username</label>
             <input
@@ -35,6 +42,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
               name="username"
               placeholder="-- Enter Username --"
             />
+        <!-- First name field -->
         <div class="form-group">
               <label for="first_name">First Name</label>
               <input
@@ -44,6 +52,7 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
                 name="first_name"
                 placeholder="-- Enter First Name -- "
         />
+        <!-- Last name field -->
         <div class="form-group">
           <label for="last_name">Last Name</label>
           <input
@@ -53,20 +62,22 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
             name="last_name"
             placeholder="-- Enter Second Name --"
         />       
+        <!-- Password field -->
         <div class="form-group">
           <label for="password1">Password</label>
           <input
-            type="text"
+            type="password"
             class="form-control"
             id="password1"
             name="password1"
             placeholder="Enter password"
           />
         </div>
+        <!-- Confirm password field -->
         <div class="form-group">
           <label for="password2">Password (Confirm)</label>
           <input
-            type="text"
+            type="password"
             class="form-control"
             id="password2"
             name="password2"
@@ -74,65 +85,19 @@ https://www.w3schools.com/css/css_positioning.asp - fixing position -->
           />
         </div>
         <br />
-        <div style="text-align: center;"> <!-- Aligning the button to the center -->
-            <button type="submit" style="display: inline", id="submit", class="btn btn-primary" onclick="doCreateUsername()">Submit</button>
+        <!-- Submit and Go to Login buttons -->
+        <div style="text-align: center;"> <!-- Aligning the buttons to the center -->
+            <button type="submit" style="display: inline", id="submit", class="btn btn-primary">Submit</button>
             <button type="button" style="display: inline", id="goTologin", class="btn btn-primary" onclick="GotoLogin()">GoToLogin</button> 
-      </div>
+        </div>
     </form>
   </fieldset>
 </div>
+
+<!-- JavaScript function to redirect to the login page -->
 <script>
   function GotoLogin(){
     window.location.href="/login"
-  }
-  function doCreateUsername(){
-    var form = document.getElementById('signupForm');
-    var user = {};
-  
-    user.username = form.querySelector('input[name="username"]').value;
-    user.first_name = form.querySelector('input[name="first_name"]').value;
-    user.last_name = form.querySelector('input[name="last_name"]').value;
-    user.password1 = form.querySelector('input[name="password1"]').value;
-  
-    createLoginAjax(user)
-    
-  }
-  function clearForm(){
-    var form = document.getElementById('signupForm');
-
-    user.username = form.querySelector('input[name="username"]').value=''
-    user.first_name = form.querySelector('input[name="first_name"]').value=''
-    user.last_name = form.querySelector('input[name="last_name"]').value=''
-    user.password1 = form.querySelector('input[name="password1"]').value=''
-    user.password2 = form.querySelector('input[name="password2"]').value=''
-  }
-  function doCreate(){
-        var form = document.getElementById('createUpdateForm')
-
-        var book = {}
-       
-        book.title = form.querySelector('input[name="title"]').value
-        book.author = form.querySelector('input[name="author"]').value
-        book.price = form.querySelector('input[name="price"]').value
-        console.log(JSON.stringify(book))
-        createBookAjax(book)
-    }
-  function createLoginAjax(user){
-      $.ajax({
-          url: "/users",
-          method: "POST",
-          data: JSON.stringify(user),
-          dataType: "json",
-          contentType: "application/json; charset=utf-8",
-          success: function(result){
-              console.log(result);
-              user.id = result.id 
-              clearForm()
-          },
-          error: function(xhr, status, error){
-              console.log("Error: " + status + " Message: " + error);
-          }
-      });
   }
 </script>
 {% endblock %}

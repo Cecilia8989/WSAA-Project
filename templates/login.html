@@ -1,10 +1,19 @@
+<!-- Author: Cecilia astore -->
+<!-- login.html -->
+<!-- Login form -->
+<!-- Main references: https://github.com/techwithtim/Flask-Web-App-Tutorial -->
+
+<!-- extends of the base template for the navigation bar -->
 {% extends "base.html" %}
+
+<!-- name of the tab -->
 {% block title %}
   Login
 {% endblock %}
 
 {% block content %}
 <style>
+        /* CSS styles for positioning */
         .relative {
             position: relative;
             width: 400px;
@@ -15,22 +24,24 @@
 
 <!-- Start of centered content -->
 <div class="relative">
+  <!-- Login form -->
   <h3 align="center" style="margin-bottom: 40px; margin-top: 40px;">Login</h3>
   <fieldset style="background: #f6f8ff; border: 2px solid #4238ca; width: 400px; padding: 20px;">
     <form method="POST">
       <div>
+        <!-- Form fields for username and password -->
         <div class="form-group">
-            <label for="username">First Name</label>
+            <label for="username">Username</label>
             <input
               type="text"
               class="form-control"
               id="username"
               name="username"
-              placeholder="Enter first name"
+              placeholder="Enter username"
             />
           </div>
         <div class="form-group">
-          <label for="password1">Password</label>
+          <label for="password">Password</label>
           <input
             type="password"
             class="form-control"
@@ -39,6 +50,7 @@
             placeholder="Enter password"
           />
         </div>
+        <!-- Submit button -->
         <div style="text-align: center;"> <!-- Aligning the button to the center -->
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
