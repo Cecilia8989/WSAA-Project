@@ -119,16 +119,20 @@ Update_DB
         $.ajax({
             url: "/employees",
             method: "DELETE",
-            // Stringify the data object
-            data: JSON.stringify({ id: employeeToDelete }), 
+            // Data object to send with the request (employee ID to delete)
+            data: JSON.stringify({ id: employeeToDelete }),
+            // Expected data type of the response 
             dataType: "json",
+            // Content type of the request body
             contentType: "application/json; charset=utf-8",
+            // Function to execute if the request succeeds
             success: function(result) {
                 console.log(result);
                 // Remove the row from the table after deletion
                 var tableElement = document.getElementById('employeeTable');
                 var rowIndex = rowElement.rowIndex;
                 tableElement.deleteRow(rowIndex);
+                // Reload the page to reflect the changes
                 location.reload()
             },
             error: function(xhr, status, error) {
