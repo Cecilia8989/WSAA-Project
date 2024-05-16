@@ -1,12 +1,10 @@
 <h1 align="center">WSSA-project2024</h1>
- <h2 align="center">Restful Api</h2>
-
-  <p align="center">
-   Cecilia Pastore 
-
+<h2 align="center">Restful Api</h2>
+<p align="center">
+Cecilia Pastore 
+</p>
 <h2 align="center">Link of the built website:</h2>
-<h2 align="center">https://cecilia891.pythonanywhere.com/</h2>
-
+<h2 align="center">[https://cecilia891.pythonanywhere.com/](https://cecilia891.pythonanywhere.com/)</h2>
 
 <details>
     <summary> Project assignement </summary>
