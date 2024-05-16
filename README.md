@@ -5,7 +5,7 @@ Cecilia Pastore
 </p>
 <h3 align="center">Link of the built website:</h3>
 <h3 align="center">https://cecilia891.pythonanywhere.com/</h3>
-<h3 align="center">Please open it on Chrome</h3>
+<h3 align="center">Please open it on Chrome Browser</h3>
 
 <details>
     <summary> Project assignement </summary>
