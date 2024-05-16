@@ -26,21 +26,12 @@ The website is optimized for use on the Chrome browser.
 
 ## 2. Built with
 
-* [Python](https://www.python.org/) : 
-* [Flask](https://flask.palletsprojects.com/)
-* HTML/CSS/JavaScript
-*  [![Python][python.com]][JQuery-url]
-* [Bootstrap](https://getbootstrap.com/)
-*  [![JQuery][JQuery.com]][JQuery-url]
+This project leverages the following technologies:
 
-*  * [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+- [HTML/CSS/JavaScript](https://developer.mozilla.org/en-US/docs/Web): Used for the frontend development of the website.
+- [Python](https://www.python.org/): The backend of the website is developed using Python.
+- [Flask](https://flask.palletsprojects.com/): Flask, a lightweight WSGI web application framework, is utilized for building the web application.
+- [jQuery](https://jquery.com/): jQuery library is imported for simplifying AJAX calls and DOM manipulation.
 
 
 
