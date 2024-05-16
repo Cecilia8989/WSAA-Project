@@ -48,9 +48,9 @@ Here are the steps to follow:
 
 #### 3.2.1 Ensure that Python is installed, along with the following libraries:
 
-- [Python](https://www.python.org/): You can install Python from [here](https://www.python.org/) or [Anaconda](https://www.anaconda.com/).
+- [Python ()](https://www.python.org/): You can install Python from [here](https://www.python.org/) or [Anaconda ()](https://www.anaconda.com/).
 - [Flask](https://pypi.org/project/Flask/): Flask is a lightweight WSGI web application framework for Python.
-- [MySQL Connector](https://pypi.org/project/mysql-connector-python/): MySQL Connector is a Python driver for connecting to MySQL databases.
+- [MySQL Connector ()](https://pypi.org/project/mysql-connector-python/): MySQL Connector is a Python driver for connecting to MySQL databases.
 - [Flask-Login](https://pypi.org/project/Flask-Login/): Flask-Login provides user session management for Flask.
 
 To install the libraries run the folloging command in the terminal:
@@ -238,9 +238,11 @@ The "update_employee.html" file enable the user to update employee records effic
 
 The primary objective of "create_sql.py" is to establish a connection to a MySQL server, create the necessary database for the API and tables if they do not exist, and populate them with sample data. The script encapsulates functionalities to execute SQL queries, create and manage database entities, and ensure the integrity and consistency of the database structure.
 
-**Key Features:**
+**Nedded libraryes*:*
 
 - **MySQL Connection**: The script utilizes the [MySQL Connector ()](https://dev.mysql.com/doc/connector-python/en/) module to establish a connection to the MySQL server. It retrieves database configuration parameters from a configuration file that can be stored in a different location and secure database connectivity [A ()](https://github.com/andrewbeattycourseware). .
+
+**Key Features:**
 
 - **Database and Table Creation**: If the specified database does not exist, the script creates it dynamically. Similarly, it creates the 'authentication_logins' and 'employees' tables if they are not present in the database, ensuring that the required database entities are available for data storage.
 
@@ -266,11 +268,13 @@ To execute the script, simply run it as the main program. It will create the nec
 
 The `db_conn.py` script defines a class `database_connection` that provides methods for interacting with a MySQL database. This script facilitates various operations for establishing a connection and executing SQL queries. It relies on the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library and a configuration file called `config` for connection parameters.
 
-**Key Features:**
+**Nedded libraryes*:*
 
 - **MySQL Connection**: Utilizes the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library to establish a connection to the MySQL server. Connection parameters such as host, user, password, and database name are fetched from a configuration file.
 
-- **Database Interaction**: Provides methods for fetching all records from a table (`getAll()`), checking the uniqueness of usernames or employee IDs (`check_unique_username()`, `check_unique_employee_id()`), creating new employee records (`createNewEmployee()`), creating new login records (`create_new_login()`), updating employee records (`update_employee()`), and deleting employee records (`delete_employee()`).
+**Key Features:**
+
+- **Database Interaction**: Provides methods for fetching all records from a table (`getAll()`), checking the uniqueness of usernames or employee IDs [()](https://stackoverflow.com/questions/54582898/flaskform-validation-code-checking-if-a-user-already-exists-or-not) (`check_unique_username()`, `check_unique_employee_id()`), creating new employee and logins records [()](https://www.w3schools.com/sql/sql_insert.asp) (`createNewEmployee()` - `create_new_login()`), updating employee records (`update_employee()`), and deleting employee records (`delete_employee()`).
 
 - **Data Retrieval**: Includes methods to fetch user records by username (`get_user_by_username()`) or employee ID (`get_user_by_emp_id()`), and to find a record by its ID (`find_by_id()`).
 
@@ -289,4 +293,23 @@ The `db_conn.py` script defines a class `database_connection` that provides meth
 - `find_by_id(id)`: Fetches a record by its ID to use as a unique parameter on update operation.
 - `update_employee(id, employee)`: Updates an employee record in the 'employees' table.
 - `delete_employee(id)`: Deletes an employee record from the 'employees' table.
+
+#### 4.2.3 server.py
+
+The `server.py` script orchestrates a RESTful API tailored for managing user authentication and database interactions through CRUD operations. This Flask-based web service streamlines essential functionalities to ensure a seamless user experience and efficient data management. [Here ()](https://www.youtube.com/watch?v=dam0GPOAvVI) and [here ()](https://www.youtube.com/watch?v=71EU8gnZqZQ) the main references for this scrip.
+
+**Nedded libraryes**
+
+- [Flask (a)](https://pypi.org/project/Flask/): is a micro web framework for Python, designed to build web applications quickly and with minimal code. It provides the tools and libraries needed to create web servers and handle HTTP requests and responses.
+- [Flask-Login (a)](https://pypi.org/project/Flask-Login/): Flask-Login is an extension for Flask that simplifies user session management and authentication in Flask applications. It provides decorators and utilities for managing user sessions, logging users in and out, and restricting access to certain parts of an application based on user authentication status. 
+
+**Key Features:**
+
+- **User Authentication:** handles user sign-up, login, and logout operations, ensuring secure access to the system. The API enforces strict password criteria and unique usernames for enhanced security.
+
+- **Employee Management:** Facilitates CRUD operations for employee records, allowing users to create, read, update, and delete employee information. The API interacts with the database to maintain an organized and up-to-date employee database.
+
+- **Database Interaction:** Interacts with two primary database tables, 'authentication_logins' and 'employees,' to execute various data retrieval and manipulation tasks. By leveraging Flask-Login and MySQL database connectivity, the script ensures efficient and reliable database interactions.
+
+- **Flash Messages:** Utilizes Flash messages for providing feedback to users during authentication, CRUD operations, and other interactions. Flash messages are used to convey success messages, error messages, and other relevant information to users [()](https://stackoverflow.com/questions/63387031/how-to-clear-existing-flash-messages-in-flask), [()](https://nrodrig1.medium.com/remove-flash-message-from-flask-web-application-e5c82e639b2f), [()](https://pythongeeks.org/flask-flashing/#:~:text=By%20default%2C%20Flask%20does%20not%20automatically%20clear%20the,the%20flash.clear%20%28%29%20function%20from%20the%20flash%20module).
 
