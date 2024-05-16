@@ -1,5 +1,5 @@
 # Author: Cecilia Pastore
-# Name: api_server.py
+# Name: server.py
 # Subject: Web Service and application
 
 # This script creates a RESTful API capable of signing up, logging in, logging out, 
@@ -19,11 +19,20 @@ employee_table = "employees"
 attkeys_employee = ['id', 'first_name', 'last_name', "employee_id", "market"]
 attkeys_logins = ['id', 'username', 'first_name', 'last_name', "password"]
 
+# Import the Flask module
+from flask import Flask
+
 # Initialize Flask app
-app = Flask(__name__, static_url_path='', static_folder='.')
-app.config['SECRET_KEY'] = sk.KEY  # Setting secret key for sessions
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'  # Setting SameSite attribute for session cookies
-app.config['SESSION_COOKIE_SECURE'] = True  # Ensuring session cookies are secure
+app = Flask(__name__, static_url_path='')
+
+# Setting secret key for sessions
+app.config['SECRET_KEY'] = sk.KEY  
+
+# Setting SameSite attribute for session cookies to 'None'
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'  
+
+# Ensuring session cookies are secure by setting the 'SESSION_COOKIE_SECURE' to True
+app.config['SESSION_COOKIE_SECURE'] = True  
 
 # Initialize Flask-Login
 login_manager = LoginManager(app)
