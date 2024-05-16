@@ -30,7 +30,7 @@ CRUD operations on the data.
         - 3.2.4 [Accessing the Local API](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#325-accessing-the-local-api)
 4. [Files Description](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#4-files-description)  
     - 4.1 [HTML/JavaScript/jQuery Templates](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#41-htmljavascriptjquery-templates)  
-        - 4.1.1 [base.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#411-basehtml)  
+        - 4.1.1 [base.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#411-base-html)  
         - 4.1.2 [Home.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#412-homehtml)  
         - 4.1.3 [sign_up.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#413-sign_uphtml)  
         - 4.1.4 [login.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#414-loginhtml)  
@@ -41,7 +41,8 @@ CRUD operations on the data.
     - 4.2 [Python Scripts](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#42-python-scripts)  
         - 4.2.1 [config_template.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#421-config_templatepy)  
         - 4.2.2 [create_sql_db.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#422-create_sql_dbpy)  
-        - 4.2.3 [db_conn.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#423-db_connpy)  
+        - 4.2.3 [db_conn.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#423-db_connpy)
+        - 4.2.4 [server.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#424-serverpy)
 
 [Source]()
 
@@ -358,3 +359,5 @@ The `server.py` script orchestrates a RESTful API tailored for managing user aut
 
 To execute the script, simply run it as the main program. This will start the server, and it will be accessible through a **Chrome browser**. By default, Flask applications run on port 5000. Then, open Chrome and navigate to http://127.0.0.1:5000/ to access the API.
 
+
+## Sources
