@@ -186,4 +186,32 @@ The "update_DB.html" file serves as a pivotal component within the Flask web app
 
 - **JavaScript Functionality**: Behind the scenes, a suite of JavaScript functions orchestrates the interaction between the user interface and backend server. These functions manage data retrieval, submission, and manipulation, ensuring smooth communication and error handling throughout the process [()](https://www.w3schools.com/jsref/jsref_encodeuricomponent.asp), [()](https://www.w3schools.com/jsref/prop_node_firstchild.asp).
 
+#### 4.1.6 showDB.html
+
+The "showDB.html" file plays a pivotal role within the Flask web application, providing users with a dynamic and interactive interface to view the contents of a database, facilitating efficient data exploration and analysis.
+
+**Key Features:**
+
+- **Database Display**: Presents database contents in a clear and concise tabular format, enabling users to analyze data attributes easily.
+
+- **AJAX Operation**: Utilizes asynchronous data fetching for real-time updates and seamless interaction with the backend server [(A)](https://github.com/andrewbeattycourseware).
+
+- **Navigation**: Offers intuitive navigation buttons for easy access to different sections of the application, ensuring a cohesive browsing experience.
+
+- **JavaScript Functionality**: Employs JavaScript functions to manage AJAX operations and dynamically update table content, enhancing user experience and reliability.
+
+#### 4.1.7 create_employee
+
+The "create_employee.html" file serves as a pivotal component within the Flask web application, enabling users to create new employee records via a user-friendly form interface.
+
+**Key Features:**
+
+- **Employee Creation Form**: Presents a structured form interface for users to input details such as first name, last name, employee ID, and market. This intuitive form layout simplifies the data entry process, ensuring accurate and comprehensive employee records [(A)](https://www.youtube.com/watch?v=dam0GPOAvVI),  [()](https://www.w3schools.com/css/css_positioning.asp).
+
+- **AJAX POST Operation**: Utilizes Asynchronous JavaScript and XML (AJAX) to perform seamless data submission to the backend server. Upon form submission, the entered employee data is sent asynchronously to the server, enhancing responsiveness and user experience.
+
+- **Navigation**: Provides a convenient navigation button for users to return to the "Update DB" page effortlessly. This streamlined navigation feature ensures a cohesive browsing experience, allowing users to transition between different sections of the application seamlessly.
+
+- **JavaScript Functionality**: Implements JavaScript functions to orchestrate the AJAX POST operation and handle form submission events. These functions facilitate efficient data transmission between the frontend interface and backend server, ensuring reliable creation of new employee records [()](https://www.w3schools.com/jsref/met_document_queryselector.asp).
+
 
