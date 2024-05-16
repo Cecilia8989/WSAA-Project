@@ -20,14 +20,14 @@ CRUD operations on the data.
 
 ## Table of Contents  
 1. [Introduction](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#1-introduction)  
-2. [Built with](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#2-built-with))  
+2. [Built with](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#2-built-with)
 3. [How to Use It](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#3-how-to-use-it)  
     - 3.1 [Open the Website Hosted in PythonAnywhere](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#31-open-the-web-site-hosted-in-pythonanywhere)  
     - 3.2 [Run the Server on Your Local Network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#32-run-the-server-on-your-local-network)  
         - 3.2.1 [Ensure Python is Installed, Along with the Following Libraries](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#321-ensure-that-python-is-installed-along-with-the-following-libraries)  
         - 3.2.2 [Set Up the Config File](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#322-set-up-the-config-file)  
-        - 3.2.3 [Run the Server on Your Local Network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#323-run-the-server-on-your-local-network)  
-        - 3.2.4 [Accessing the Local API](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#324-accessing-the-local-api)  
+        - 3.2.3 [Run the Server on Your Local Network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#32-run-the-server-on-your-local-network)  
+        - 3.2.4 [Accessing the Local API]()
 4. [Files Description](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#4-files-description)  
     - 4.1 [HTML/JavaScript/jQuery Templates](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#41-htmljavascriptjquery-templates)  
         - 4.1.1 [base.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#411-basehtml)  
