@@ -77,10 +77,10 @@ Here are the steps to follow:
 
 #### 3.2.1 Ensure that Python is installed, along with the following libraries:
 
-- [Python ()](https://www.python.org/): You can install Python from [here](https://www.python.org/) or [Anaconda ()](https://www.anaconda.com/).
-- [Flask](https://pypi.org/project/Flask/): Flask is a lightweight WSGI web application framework for Python.
-- [MySQL Connector ()](https://pypi.org/project/mysql-connector-python/): MySQL Connector is a Python driver for connecting to MySQL databases.
-- [Flask-Login](https://pypi.org/project/Flask-Login/): Flask-Login provides user session management for Flask.
+- [Python ()](https://www.python.org/ (2)): You can install Python from [here](https://www.python.org/ (2)) or [Anaconda (6)](https://www.anaconda.com/) package.
+- [Flask (3)](https://pypi.org/project/Flask/): Flask is a lightweight WSGI web application framework for Python.
+- [MySQL Connector (7)](https://pypi.org/project/mysql-connector-python/): MySQL Connector is a Python driver for connecting to MySQL databases.
+- [Flask-Login (8)](https://pypi.org/project/Flask-Login/): Flask-Login provides user session management for Flask.
 
 To install the libraries run the folloging command in the terminal:
 
@@ -145,11 +145,11 @@ Below is a description of each file involved.
 
 #### 4.1.1 base html. 
 
-This HTML file establishes the foundational structure and features for a Flask web application, encompassing navigation, message presentation, content arrangement, and styling, to be applied across all HTML files. The code has been take and adapted from the the tutorial [ Tech With Tim ()](https://www.youtube.com/watch?v=dam0GPOAvVI)
+This HTML file establishes the foundational structure and features for a Flask web application, encompassing navigation, message presentation, content arrangement, and styling, to be applied across all HTML files. The code has been take and adapted from the the tutorial [Tech With Tim (9)](https://www.youtube.com/watch?v=dam0GPOAvVI)
 
 **Key Features:**
 
-- **Meta Tags and Dependencies**: These are like instructions for the browser, ensuring everything looks right on different devices [()](https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests). It also includes links to some special style sheets [CSS ()](https://www.w3schools.com/Css/) on [ Bootstrampt ()](https://getbootstrap.com/) and a [fieldset style ()](https://www.webteacher.ws/2009/12/10/style-fieldsets-like-a-pro/)to enhance the site's appearance.
+- **Meta Tags and Dependencies**: These are like instructions for the browser, ensuring everything looks right on different devices [(10)](https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests). It also includes links to some special style sheets [CSS (11)](https://www.w3schools.com/Css/) on [ Bootstrampt (5)](https://getbootstrap.com/) and a [fieldset style (12)](https://www.webteacher.ws/2009/12/10/style-fieldsets-like-a-pro/)to enhance the site's appearance.
 
 - **Navigation Bar**: Positioned at the top of the page, the navigation bar facilitates user movement throughout the site, adjusting dynamically based on login status.
 
@@ -161,15 +161,15 @@ The "Home.html" file serves as the main page for presenting the structure of an 
 
 **Key Features:**
 
-- **Extending Base Template**: This file extends the "base.html" template, inheriting its navigation bar structure and styling [(A)](https://www.youtube.com/watch?v=dam0GPOAvVI).
+- **Extending Base Template**: This file extends the "base.html" template, inheriting its navigation bar structure and styling [(9)](https://www.youtube.com/watch?v=dam0GPOAvVI).
 
 - **Main Content**: The main content container showcases a welcoming message and a concise overview of the RESTful API's features. 
 
-- **CSS Styling**: Custom CSS styles are applied to ensure proper formatting and layout of the content container, utilizing a [flexbox container ()](https://www.w3schools.com/cssref/css3_pr_flex-direction.php) for improved alignment and responsiveness.
+- **CSS Styling**: Custom CSS styles are applied to ensure proper formatting and layout of the content container, utilizing a [flexbox container (13)](https://www.w3schools.com/cssref/css3_pr_flex-direction.php) for improved alignment and responsiveness.
 
 - **Action Selection**: Users are presented with action buttons within a form container. Two buttons are provided: one for displaying the "Employee-Database" and another for updating the database. Authentication is required for the latter action.
 
-- **JavaScript Functions**: JavaScript functions are integrated to streamline navigation. Clicking on the buttons triggers functions that redirect users to specific pages: "show_employees" for displaying the employee database and "update_DB" for updating the database [()](https://stackoverflow.com/questions/52544089/how-to-create-two-html-buttons-side-by-side).
+- **JavaScript Functions**: JavaScript functions are integrated to streamline navigation. Clicking on the buttons triggers functions that redirect users to specific pages: "show_employees" for displaying the employee database and "update_DB" for updating the database [(14)](https://stackoverflow.com/questions/52544089/how-to-create-two-html-buttons-side-by-side).
 
 #### 4.1.3 sign_up.html
 
@@ -181,15 +181,15 @@ The "sign_up.html" file presents a sign-up form for users to register in the sys
 
 - **Title of the Page**: The page title is set to "Sign up".
 
-- **Main Content**: The main content container features a sign-up form where users can input their username, first name, last name, and password. The form is styled for clarity and usability [(A)](https://www.youtube.com/watch?v=dam0GPOAvVI).
+- **Main Content**: The main content container features a sign-up form where users can input their username, first name, last name, and password. The form is styled for clarity and usability [(9)](https://www.youtube.com/watch?v=dam0GPOAvVI).
 
-- **CSS Styling**: Custom CSS styles are applied to position the content container and enhance the visual presentation of the form [()](https://www.w3schools.com/css/css_positioning.asp).
+- **CSS Styling**: Custom CSS styles are applied to position the content container and enhance the visual presentation of the form [(15)](https://www.w3schools.com/css/css_positioning.asp).
 
 - **Submit and Go to Login Buttons**: Users can submit their sign-up information with the "Submit" button. Additionally, a "GoToLogin" button redirects users to the login page.
 
 #### 4.1.4 login.html
 
-The "login.html" file provides a login form for users to access the system [(A)](https://github.com/techwithtim/Flask-Web-App-Tutorial).
+The "login.html" file provides a login form for users to access the system [(9)](https://github.com/techwithtim/Flask-Web-App-Tutorial).
 
 **Key Features:**
 
@@ -211,9 +211,9 @@ The "update_DB.html" file serves as a pivotal component within the Flask web app
 
 - **Delete Employees**: The ability to remove redundant or outdated entries is seamlessly integrated, offering users the option to delete records directly from the displayed table. Upon confirmation, the selected entry is promptly removed, ensuring data integrity and management efficiency.
 
-- **AJAX Functionality**: Leveraging AJAX requests, all CRUD operations are performed asynchronously. This results in a fluid and responsive user experience, enhancing productivity and engagement [()](https://github.com/andrewbeattycourseware).
+- **AJAX Functionality**: Leveraging AJAX requests, all CRUD operations are performed asynchronously. This results in a fluid and responsive user experience, enhancing productivity and engagement [(16)](https://github.com/andrewbeattycourseware).
 
-- **JavaScript Functionality**: Behind the scenes, a suite of JavaScript functions orchestrates the interaction between the user interface and backend server. These functions manage data retrieval, submission, and manipulation, ensuring smooth communication and error handling throughout the process [()](https://www.w3schools.com/jsref/jsref_encodeuricomponent.asp), [()](https://www.w3schools.com/jsref/prop_node_firstchild.asp).
+- **JavaScript Functionality**: Behind the scenes, a suite of JavaScript functions orchestrates the interaction between the user interface and backend server. These functions manage data retrieval, submission, and manipulation, ensuring smooth communication and error handling throughout the process [(17)](https://www.w3schools.com/jsref/jsref_encodeuricomponent.asp), [(18)](https://www.w3schools.com/jsref/prop_node_firstchild.asp).
 
 #### 4.1.6 showDB.html
 
@@ -223,7 +223,7 @@ The "showDB.html" file plays a pivotal role within the Flask web application, pr
 
 - **Database Display**: Presents database contents in a clear and concise tabular format, enabling users to analyze data attributes easily.
 
-- **AJAX Operation**: Utilizes asynchronous data fetching for real-time updates and seamless interaction with the backend server [(A)](https://github.com/andrewbeattycourseware).
+- **AJAX Operation**: Utilizes asynchronous data fetching for real-time updates and seamless interaction with the backend server [(16)](https://github.com/andrewbeattycourseware).
 
 - **Navigation**: Offers intuitive navigation buttons for easy access to different sections of the application, ensuring a cohesive browsing experience.
 
@@ -235,7 +235,7 @@ The "create_employee.html" file serves as a pivotal component within the Flask w
 
 **Key Features:**
 
-- **Employee Creation Form**: Presents a structured form interface for users to input details such as first name, last name, employee ID, and market. This intuitive form layout simplifies the data entry process, ensuring accurate and comprehensive employee records [(A)](https://www.youtube.com/watch?v=dam0GPOAvVI),  [()](https://www.w3schools.com/css/css_positioning.asp).
+- **Employee Creation Form**: Presents a structured form interface for users to input details such as first name, last name, employee ID, and market. This intuitive form layout simplifies the data entry process, ensuring accurate and comprehensive employee records [(9)](https://www.youtube.com/watch?v=dam0GPOAvVI).
 
 - **AJAX POST Operation**: Utilizes Asynchronous JavaScript and XML (AJAX) to perform seamless data submission to the backend server. Upon form submission, the entered employee data is sent asynchronously to the server, enhancing responsiveness and user experience.
 
@@ -247,17 +247,17 @@ The "update_employee.html" file enable the user to update employee records effic
 
 **Key Features:**
 
-- **Employee Update Form**: The core feature of the file is the employee update form, which presents users with input fields for editing various attributes. This structured form layout simplifies the data modification process, ensuring that users can make changes quickly and accurately [(A)](https://www.youtube.com/watch?v=dam0GPOAvVI).
+- **Employee Update Form**: The core feature of the file is the employee update form, which presents users with input fields for editing various attributes. This structured form layout simplifies the data modification process, ensuring that users can make changes quickly and accurately [(9)](https://www.youtube.com/watch?v=dam0GPOAvVI).
 
 - **AJAX PUT Operation**: Leveraging Asynchronous JavaScript and XML (AJAX), the file performs updates to the backend server asynchronously. When users submit the update form, the modified employee data is sent to the server using the PUT method, enabling real-time updates without the need for page refreshes. 
 
-- **Dynamic Form Population**: To streamline the update process, the form automatically populates with existing employee data retrieved from URL parameters. By presenting users with pre-filled fields, the file simplifies the update process and enhances usability [()](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams), [()](https://builtin.com/articles/urlsearchparams).
+- **Dynamic Form Population**: To streamline the update process, the form automatically populates with existing employee data retrieved from URL parameters. By presenting users with pre-filled fields, the file simplifies the update process and enhances usability [(19)](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams), [(20)](https://builtin.com/articles/urlsearchparams).
 
 - **Navigation**: The file includes a navigation button that allows users to return to the "Update DB" in any moment. 
 
 - **JavaScript Functionality**: JavaScript functions embedded within the file orchestrate the form submission process and handle AJAX requests for updating employee records.
 
-- **JavaScript Functionality**: Implements JavaScript functions to orchestrate the AJAX POST operation and handle form submission events. These functions facilitate efficient data transmission between the frontend interface and backend server, ensuring reliable creation of new employee records [()](https://www.w3schools.com/jsref/met_document_queryselector.asp).
+- **JavaScript Functionality**: Implements JavaScript functions to orchestrate the AJAX POST operation and handle form submission events. These functions facilitate efficient data transmission between the frontend interface and backend server, ensuring reliable creation of new employee records [(21)](https://www.w3schools.com/jsref/met_document_queryselector.asp).
 
 ### 4.2 Python Scripts
 
@@ -270,7 +270,7 @@ The template contains the `DBConfigSQL` class, which provides a template to fill
 - **HOST:** Specifies the host address of the SQL database.
 - **USER:** Specifies the username used to authenticate access to the SQL database.
 - **PASSWORD:** Specifies the password used to authenticate access to the SQL database.
-- **SECURITY_KEY:** Specifies the security key used inside the flask application [()](https://www.delftstack.com/howto/python-flask/flask-secret-key/).
+- **SECURITY_KEY:** Specifies the security key used inside the flask application [(22)](https://www.delftstack.com/howto/python-flask/flask-secret-key/).
 
 **Usage:**
 
@@ -282,7 +282,7 @@ The primary objective of "create_sql.py" is to establish a connection to a MySQL
 
 **Nedded libraryes*:*
 
-- **MySQL Connection**: The script utilizes the [MySQL Connector ()](https://dev.mysql.com/doc/connector-python/en/) module to establish a connection to the MySQL server. It retrieves database configuration parameters from a configuration file that can be stored in a different location and secure database connectivity [A ()](https://github.com/andrewbeattycourseware). .
+- **MySQL Connection**: The script utilizes the [MySQL Connector (7)](https://dev.mysql.com/doc/connector-python/en/) module to establish a connection to the MySQL server. It retrieves database configuration parameters from a configuration file that can be stored in a different location and secure database connectivity [(16)](https://github.com/andrewbeattycourseware). .
 
 **Key Features:**
 
@@ -308,15 +308,15 @@ To execute the script, simply run it as the main program. It will create the nec
 
 #### 4.2.3 db_conn.py
 
-The `db_conn.py` script defines a class `database_connection` that provides methods for interacting with a MySQL database. This script facilitates various operations for establishing a connection and executing SQL queries. It relies on the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library and a configuration file called `config` for connection parameters.
+The `db_conn.py` script defines a class `database_connection` that provides methods for interacting with a MySQL database. This script facilitates various operations for establishing a connection and executing SQL queries. It relies on the MySQL Connector/Python library and a configuration file called `config` for connection parameters.
 
 **Nedded libraryes*:*
 
-- **MySQL Connection**: Utilizes the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library to establish a connection to the MySQL server. Connection parameters such as host, user, password, and database name are fetched from a configuration file.
+- **MySQL Connection**: Utilizes the [MySQL Connector/Python (7)](https://dev.mysql.com/doc/connector-python/en/) library to establish a connection to the MySQL server. Connection parameters such as host, user, password, and database name are fetched from a configuration file.
 
 **Key Features:**
 
-- **Database Interaction**: Provides methods for fetching all records from a table (`getAll()`), checking the uniqueness of usernames or employee IDs [()](https://stackoverflow.com/questions/54582898/flaskform-validation-code-checking-if-a-user-already-exists-or-not) (`check_unique_username()`, `check_unique_employee_id()`), creating new employee and logins records [()](https://www.w3schools.com/sql/sql_insert.asp) (`createNewEmployee()` - `create_new_login()`), updating employee records (`update_employee()`), and deleting employee records (`delete_employee()`).
+- **Database Interaction**: Provides methods for fetching all records from a table (`getAll()`), checking the uniqueness of usernames or employee IDs [(23)](https://stackoverflow.com/questions/54582898/flaskform-validation-code-checking-if-a-user-already-exists-or-not) (`check_unique_username()`, `check_unique_employee_id()`), creating new employee and logins records [(24)](https://www.w3schools.com/sql/sql_insert.asp) (`createNewEmployee()` - `create_new_login()`), updating employee records (`update_employee()`), and deleting employee records (`delete_employee()`).
 
 - **Data Retrieval**: Includes methods to fetch user records by username (`get_user_by_username()`) or employee ID (`get_user_by_emp_id()`), and to find a record by its ID (`find_by_id()`).
 
@@ -338,12 +338,12 @@ The `db_conn.py` script defines a class `database_connection` that provides meth
 
 #### 4.2.4 server.py
 
-The `server.py` script orchestrates a RESTful API tailored for managing user authentication and database interactions through CRUD operations. This Flask-based web service streamlines essential functionalities to ensure a seamless user experience and efficient data management. [Here ()](https://www.youtube.com/watch?v=dam0GPOAvVI) and [here ()](https://www.youtube.com/watch?v=71EU8gnZqZQ) the main references for this scrip.
+The `server.py` script orchestrates a RESTful API tailored for managing user authentication and database interactions through CRUD operations. This Flask-based web service streamlines essential functionalities to ensure a seamless user experience and efficient data management. [Here (9)](https://www.youtube.com/watch?v=dam0GPOAvVI) and [here (25)](https://www.youtube.com/watch?v=71EU8gnZqZQ) the main references for this scrip.
 
 **Nedded libraryes**
 
-- [Flask (a)](https://pypi.org/project/Flask/): is a micro web framework for Python, designed to build web applications quickly and with minimal code. It provides the tools and libraries needed to create web servers and handle HTTP requests and responses.
-- [Flask-Login (a)](https://pypi.org/project/Flask-Login/): Flask-Login is an extension for Flask that simplifies user session management and authentication in Flask applications. It provides decorators and utilities for managing user sessions, logging users in and out, and restricting access to certain parts of an application based on user authentication status. 
+- [Flask (3)](https://pypi.org/project/Flask/): is a micro web framework for Python, designed to build web applications quickly and with minimal code. It provides the tools and libraries needed to create web servers and handle HTTP requests and responses.
+- [Flask-Login (26)](https://pypi.org/project/Flask-Login/): Flask-Login is an extension for Flask that simplifies user session management and authentication in Flask applications. It provides decorators and utilities for managing user sessions, logging users in and out, and restricting access to certain parts of an application based on user authentication status. 
 
 **Key Features:**
 
@@ -353,7 +353,7 @@ The `server.py` script orchestrates a RESTful API tailored for managing user aut
 
 - **Database Interaction:** Interacts with two primary database tables, 'authentication_logins' and 'employees,' to execute various data retrieval and manipulation tasks. By leveraging Flask-Login and MySQL database connectivity, the script ensures efficient and reliable database interactions.
 
-- **Flash Messages:** Utilizes Flash messages for providing feedback to users during authentication, CRUD operations, and other interactions. Flash messages are used to convey success messages, error messages, and other relevant information to users [()](https://stackoverflow.com/questions/63387031/how-to-clear-existing-flash-messages-in-flask), [()](https://nrodrig1.medium.com/remove-flash-message-from-flask-web-application-e5c82e639b2f), [()](https://pythongeeks.org/flask-flashing/#:~:text=By%20default%2C%20Flask%20does%20not%20automatically%20clear%20the,the%20flash.clear%20%28%29%20function%20from%20the%20flash%20module).
+- **Flash Messages:** Utilizes Flash messages for providing feedback to users during authentication, CRUD operations, and other interactions. Flash messages are used to convey success messages, error messages, and other relevant information to users [(27)](https://stackoverflow.com/questions/63387031/how-to-clear-existing-flash-messages-in-flask), [(28)](https://nrodrig1.medium.com/remove-flash-message-from-flask-web-application-e5c82e639b2f), [(29)](https://pythongeeks.org/flask-flashing/#:~:text=By%20default%2C%20Flask%20does%20not%20automatically%20clear%20the,the%20flash.clear%20%28%29%20function%20from%20the%20flash%20module).
 
 **Usage:**
 
