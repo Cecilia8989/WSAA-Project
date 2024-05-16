@@ -200,7 +200,7 @@ The "showDB.html" file plays a pivotal role within the Flask web application, pr
 
 - **JavaScript Functionality**: Employs JavaScript functions to manage AJAX operations and dynamically update table content, enhancing user experience and reliability.
 
-#### 4.1.7 create_employee
+#### 4.1.7 create_employee.html
 
 The "create_employee.html" file serves as a pivotal component within the Flask web application, enabling users to create new employee records via a user-friendly form interface.
 
@@ -211,6 +211,24 @@ The "create_employee.html" file serves as a pivotal component within the Flask w
 - **AJAX POST Operation**: Utilizes Asynchronous JavaScript and XML (AJAX) to perform seamless data submission to the backend server. Upon form submission, the entered employee data is sent asynchronously to the server, enhancing responsiveness and user experience.
 
 - **Navigation**: Provides a convenient navigation button for users to return to the "Update DB" page effortlessly. This streamlined navigation feature ensures a cohesive browsing experience, allowing users to transition between different sections of the application seamlessly.
+
+#### 4.1.7 update_employee.html
+
+The "update_employee.html" file enable the user to update employee records efficiently and accurately through an intuitive form interface.
+
+**Key Features:**
+
+- **Employee Update Form**: The core feature of the file is the employee update form, which presents users with input fields for editing various attributes. This structured form layout simplifies the data modification process, ensuring that users can make changes quickly and accurately [(A)](https://www.youtube.com/watch?v=dam0GPOAvVI).
+
+- **AJAX PUT Operation**: Leveraging Asynchronous JavaScript and XML (AJAX), the file performs updates to the backend server asynchronously. When users submit the update form, the modified employee data is sent to the server using the PUT method, enabling real-time updates without the need for page refreshes. 
+
+- **Dynamic Form Population**: To streamline the update process, the form automatically populates with existing employee data retrieved from URL parameters. By presenting users with pre-filled fields, the file simplifies the update process and enhances usability [()](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams), [()](https://builtin.com/articles/urlsearchparams).
+
+
+
+- **Navigation**: The file includes a navigation button that allows users to return to the "Update DB" in any moment. 
+
+- **JavaScript Functionality**: JavaScript functions embedded within the file orchestrate the form submission process and handle AJAX requests for updating employee records.
 
 - **JavaScript Functionality**: Implements JavaScript functions to orchestrate the AJAX POST operation and handle form submission events. These functions facilitate efficient data transmission between the frontend interface and backend server, ensuring reliable creation of new employee records [()](https://www.w3schools.com/jsref/met_document_queryselector.asp).
 
