@@ -58,10 +58,10 @@ The website is optimized for use on the Chrome browser.
 This project leverages the following technologies:
 
 - [HTML/CSS/JavaScript (1)](https://developer.mozilla.org/en-US/docs/Web): Used for the frontend development of the website.
-- [Python](https://www.python.org/ (2)): The backend of the website is developed using Python. The version that have been used is PYTHON 3.11.4
-- [Flask](https://flask.palletsprojects.com/ (3)): Flask, a lightweight WSGI web application framework, is utilized for building the web application.
-- [jQuery](https://jquery.com/ (4)): jQuery library is imported for simplifying AJAX calls and DOM manipulation.
-- [Bootstrap](https://getbootstrap.com/ (5)): Bootstrap framework is utilized for designing responsive and mobile-first websites.
+- [Python (2)](https://www.python.org/): The backend of the website is developed using Python. The version that have been used is PYTHON 3.11.4
+- [Flask (3)](https://flask.palletsprojects.com/): Flask, a lightweight WSGI web application framework, is utilized for building the web application.
+- [jQuery (4)](https://jquery.com/): jQuery library is imported for simplifying AJAX calls and DOM manipulation.
+- [Bootstrap (5)](https://getbootstrap.com/): Bootstrap framework is utilized for designing responsive and mobile-first websites.
 
 ## 3. How to use it
 
@@ -77,7 +77,7 @@ Here are the steps to follow:
 
 #### 3.2.1 Ensure that Python is installed, along with the following libraries:
 
-- [Python ()](https://www.python.org/ (2)): You can install Python from [here](https://www.python.org/ (2)) or [Anaconda (6)](https://www.anaconda.com/) package.
+- [Python (2)](https://www.python.org/): You can install Python from [here](https://www.python.org/ (2)) or [Anaconda (6)](https://www.anaconda.com/) package.
 - [Flask (3)](https://pypi.org/project/Flask/): Flask is a lightweight WSGI web application framework for Python.
 - [MySQL Connector (7)](https://pypi.org/project/mysql-connector-python/): MySQL Connector is a Python driver for connecting to MySQL databases.
 - [Flask-Login (8)](https://pypi.org/project/Flask-Login/): Flask-Login provides user session management for Flask.
@@ -282,7 +282,7 @@ The primary objective of "create_sql.py" is to establish a connection to a MySQL
 
 **Nedded libraryes*:*
 
-- **MySQL Connection**: The script utilizes the [MySQL Connector (7)](https://dev.mysql.com/doc/connector-python/en/) module to establish a connection to the MySQL server. It retrieves database configuration parameters from a configuration file that can be stored in a different location and secure database connectivity [(16)](https://github.com/andrewbeattycourseware). .
+- **MySQL Connection**: The script utilizes the [MySQL Connector (7)](https://dev.mysql.com/doc/connector-python/en/) module to establish a connection to the MySQL server. It retrieves database configuration parameters from a configuration file that can be stored in a different location and secure database connectivity [(16)](https://github.com/andrewbeattycourseware).
 
 **Key Features:**
 
@@ -403,10 +403,10 @@ To execute the script, simply run it as the main program. This will start the se
     <p>
 
 * [CSS calc() Function](https://www.w3schools.com/cssref/func_calc.php)
-* [RESTful Authentication with Flask]([https://www.python.org/](https://blog.miguelgrinberg.com/post/restful-authentication-with-flask))
-* [6.9.5.16 MySQLCursor.lastrowid Property]([https://flask.palletsprojects.com/](https://dev.mysql.com/doc/connectors/en/connector-python-api-mysqlcursor-lastrowid.html))
+* [RESTful Authentication with Flask](https://blog.miguelgrinberg.com/post/restful-authentication-with-flask)
+* [6.9.5.16 MySQLCursor.lastrowid Property](https://dev.mysql.com/doc/connectors/en/connector-python-api-mysqlcursor-lastrowid.html)
 * [5 Easy Ways to Insert Spaces in HTML](https://blog.hubspot.com/website/html-space)
-* [Why transform:translate(-50%, -50%) to center element?]([https://getbootstrap.com/](https://dev.to/urstrulyvishwak/why-transformtranslate-50-50-to-center-element-15m1))
+* [Why transform:translate(-50%, -50%) to center element?](https://dev.to/urstrulyvishwak/why-transformtranslate-50-50-to-center-element-15m1)
 * [Dillinger](https://dillinger.io/)
 * [Awesome Readme Examples for Writing better Readmes ](https://dev.to/documatic/awesome-readme-examples-for-writing-better-readmes-3eh3)
 * 
