@@ -37,9 +37,13 @@ CRUD operations on the data.
        4.1.5 [update_DB.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#415-update_dbhtml)
        4.1.6 [showDB.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#416-showdbhtml)
        4.1.7 [create_employee.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#417-create_employeehtml)
-       
-
-7. [Source]()
+       4.1.8 [update_employee.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#418-update_employeehtml)
+   4.2 [Python Scripts](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#42-python-script)
+       4.2.1 [config_template.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#421-config_templatepy)
+       4.2.2 [create_sql_db.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#422-create_sql_dbpy)
+       4.2.3 [db_conn.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#423-db_connpy)
+       4.2.4 [server.py](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#424-serverpy)
+[Source]()
 
 
 ## 1. Introduction 
@@ -254,20 +258,20 @@ The "update_employee.html" file enable the user to update employee records effic
 
 - **JavaScript Functionality**: Implements JavaScript functions to orchestrate the AJAX POST operation and handle form submission events. These functions facilitate efficient data transmission between the frontend interface and backend server, ensuring reliable creation of new employee records [()](https://www.w3schools.com/jsref/met_document_queryselector.asp).
 
-### 4.2 Python Script
+### 4.2 Python Scripts
 
 #### 4.2.1 config_template.py
 
 The template contains the `DBConfigSQL` class, which provides a template to fill with configuration parameters for connecting to an SQL database. It includes essential details such as the host address, username, password, and security key required to establish a connection.
 
-## Key Features:
+**Key Features:**
 
 - **HOST:** Specifies the host address of the SQL database.
 - **USER:** Specifies the username used to authenticate access to the SQL database.
 - **PASSWORD:** Specifies the password used to authenticate access to the SQL database.
 - **SECURITY_KEY:** Specifies the security key used inside the flask application [()](https://www.delftstack.com/howto/python-flask/flask-secret-key/).
 
-## Usage:
+**Usage:**
 
 As explained in 'How to use it' section, the user needs to enter their personalized parameters and rename the file as `config.py` to be correctly imported in the main server script and `db_connection.py`.
 
