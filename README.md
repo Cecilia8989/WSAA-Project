@@ -27,7 +27,7 @@ CRUD operations on the data.
         - 3.2.1 [Ensure Python is Installed, Along with the Following Libraries](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#321-ensure-that-python-is-installed-along-with-the-following-libraries)  
         - 3.2.2 [Set Up the Config File](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#322-set-up-the-config-file)  
         - 3.2.3 [Run the Server on Your Local Network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#32-run-the-server-on-your-local-network)  
-        - 3.2.4 [Accessing the Local API]()
+        - 3.2.4 [Accessing the Local API](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#325-accessing-the-local-api)
 4. [Files Description](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#4-files-description)  
     - 4.1 [HTML/JavaScript/jQuery Templates](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#41-htmljavascriptjquery-templates)  
         - 4.1.1 [base.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#411-basehtml)  
