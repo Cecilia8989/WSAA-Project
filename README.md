@@ -57,11 +57,11 @@ The website is optimized for use on the Chrome browser.
 
 This project leverages the following technologies:
 
-- [HTML/CSS/JavaScript](https://developer.mozilla.org/en-US/docs/Web): Used for the frontend development of the website.
-- [Python](https://www.python.org/): The backend of the website is developed using Python. The version that have been used is PYTHON 3.11.4
-- [Flask](https://flask.palletsprojects.com/): Flask, a lightweight WSGI web application framework, is utilized for building the web application.
-- [jQuery](https://jquery.com/): jQuery library is imported for simplifying AJAX calls and DOM manipulation.
-- [Bootstrap](https://getbootstrap.com/): Bootstrap framework is utilized for designing responsive and mobile-first websites.
+- [HTML/CSS/JavaScript (1)](https://developer.mozilla.org/en-US/docs/Web): Used for the frontend development of the website.
+- [Python](https://www.python.org/ (2)): The backend of the website is developed using Python. The version that have been used is PYTHON 3.11.4
+- [Flask](https://flask.palletsprojects.com/ (3)): Flask, a lightweight WSGI web application framework, is utilized for building the web application.
+- [jQuery](https://jquery.com/ (4)): jQuery library is imported for simplifying AJAX calls and DOM manipulation.
+- [Bootstrap](https://getbootstrap.com/ (5)): Bootstrap framework is utilized for designing responsive and mobile-first websites.
 
 ## 3. How to use it
 
@@ -361,3 +361,39 @@ To execute the script, simply run it as the main program. This will start the se
 
 
 ## Sources
+<details>
+    <summary> Project Assignment </summary>
+    <p>
+
+* (1) [Web technology for developers](https://developer.mozilla.org/en-US/docs/Web)
+* (2) [Python](https://www.python.org/)
+* (3) [Flask](https://flask.palletsprojects.com/)
+* (4) [jQuery](https://jquery.com/)
+* (5) [Bootstrap](https://getbootstrap.com/)
+* (6) [Anaconda](https://www.anaconda.com/)
+* (7) [MySQL Connector](https://pypi.org/project/mysql-connector-python/)
+* (8) [Flask-Login](https://pypi.org/project/Flask-Login/)
+* (9) [Python Website Full Tutorial - Flask, Authentication, Databases & More](https://www.youtube.com/watch?v=dam0GPOAvVI)
+* (10) [How to prevent favicon.ico requests?](https://stackoverflow.com/questions/1321878/how-to-prevent-favicon-ico-requests)
+* (11) [CSS Tutorial](https://www.w3schools.com/Css/)
+* (12) [Style Fieldsets like a Pro](https://www.webteacher.ws/2009/12/10/style-fieldsets-like-a-pro/)
+* (13) [CSS flex-direction Property](https://www.w3schools.com/cssref/css3_pr_flex-direction.php)
+* (14) [How to create two HTML buttons side by side](https://stackoverflow.com/questions/52544089/how-to-create-two-html-buttons-side-by-side)
+* (15) [CSS Layout - The position Property](https://www.w3schools.com/css/css_positioning.asp)
+* (16) [AndrewBeattyCourseware](https://github.com/andrewbeattycourseware)
+* (17) [JavaScript encodeURIComponent()](https://www.w3schools.com/jsref/jsref_encodeuricomponent.asp)
+* (18) [HTML DOM Element firstChild](https://www.w3schools.com/jsref/prop_node_firstchild.asp)
+* (19) [URLSearchParams: URLSearchParams() constructor](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams)
+* (20) [How to Use URLSearchParams in JavaScript](https://builtin.com/articles/urlsearchparams)
+* (21) [HTML DOM Document querySelector()](https://www.w3schools.com/jsref/met_document_queryselector.asp)
+* (22) [Flask Secret Key](https://www.delftstack.com/howto/python-flask/flask-secret-key/#google_vignette)
+* (23) [FlaskForm Validation Code: checking if a user already exists or not](https://stackoverflow.com/questions/54582898/flaskform-validation-code-checking-if-a-user-already-exists-or-not)
+* (24) [SQL INSERT INTO Statement](https://www.w3schools.com/sql/sql_insert.asp)
+* (25) [Python Flask Authentication Tutorial - Learn Flask Login](https://www.youtube.com/watch?v=71EU8gnZqZQ)
+* (26) [Flask-Login 0.6.3](https://pypi.org/project/Flask-Login/)
+* (27) [how to clear existing flash messages in Flask](https://stackoverflow.com/questions/63387031/how-to-clear-existing-flash-messages-in-flask)
+* (28) [Remove Flash Message from Flask Web Application](https://nrodrig1.medium.com/remove-flash-message-from-flask-web-application-e5c82e639b2f)
+* (29) [Python Flask Flashing](https://pythongeeks.org/flask-flashing/#:~:text=By%20default%2C%20Flask%20does%20not%20automatically%20clear%20the,the%20flash.clear%20%28%29%20function%20from%20the%20flash%20module)
+
+</p>
+</details>
