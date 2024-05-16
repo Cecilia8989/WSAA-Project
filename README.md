@@ -236,7 +236,7 @@ The "create_employee.html" file serves as a pivotal component within the Flask w
 
 - **Navigation**: Provides a convenient navigation button for users to return to the "Update DB" page effortlessly. This streamlined navigation feature ensures a cohesive browsing experience, allowing users to transition between different sections of the application seamlessly.
 
-#### 4.1.7 update_employee.html
+#### 4.1.8 update_employee.html
 
 The "update_employee.html" file enable the user to update employee records efficiently and accurately through an intuitive form interface.
 
