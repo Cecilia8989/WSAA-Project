@@ -4,6 +4,10 @@
   <p align="center">
    Cecilia Pastore 
 
+<h2 align="center">Link of the built website:</h2>
+<h2 align="center">https://cecilia891.pythonanywhere.com/</h2>
+
+
 <details>
     <summary> Project assignement </summary>
            <p>
@@ -29,7 +33,7 @@ The website is optimized for use on the Chrome browser.
 This project leverages the following technologies:
 
 - [HTML/CSS/JavaScript](https://developer.mozilla.org/en-US/docs/Web): Used for the frontend development of the website.
-- [Python](https://www.python.org/): The backend of the website is developed using Python.
+- [Python](https://www.python.org/): The backend of the website is developed using Python. The version that have been used is PYTHON 3.11.4
 - [Flask](https://flask.palletsprojects.com/): Flask, a lightweight WSGI web application framework, is utilized for building the web application.
 - [jQuery](https://jquery.com/): jQuery library is imported for simplifying AJAX calls and DOM manipulation.
 
