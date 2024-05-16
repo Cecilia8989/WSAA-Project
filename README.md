@@ -18,6 +18,30 @@ CRUD operations on the data.
 </p>
 </details>
 
+## Table of content
+1. [Introduction](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#1-introduction)
+2. [Built with]([https://github.com/Cecilia8989/pands-project/blob/main/README.md#1-introduction](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#2-built-with))
+3. [How to use it](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#3-how-to-use-it)
+   3.1 [Open the Web site hosted in pythonanywhere]([https://github.com/Cecilia8989/pands-project/blob/main/README.md#technologies](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#31-open-the-web-site-hosted-in-pythonanywhere))
+   3.2 [Run the server on your local network]([Run the server on your local network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#32-run-the-server-on-your-local-network))
+       3.2.1 [Ensure that Python is installed, along with the following libraries:]([https://github.com/Cecilia8989/pands-project/blob/main/README.md#running-the-script](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#32-run-the-server-on-your-local-network)
+       3.2.2 [Run the server on your local network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#322-set-up-the-config-file)
+       3.2.3 [Run the server on your local network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#324-run-the-serverpy)
+       3.2.4 [Run the server on your local network](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#325-accessing-the-local-api)
+4. [Files Description](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#4-files-description)
+    4.1 [HTML/JavaScript/jQuery Templates](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#41-htmljavascriptjquery-templates)
+       4.1.1 [base html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#411-base-html)
+       4.1.2 [Home.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#412-homehtml)
+       4.1.3 [sign_up.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#413-sign_uphtml)
+       4.1.4 [login.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#414-loginhtml)
+       4.1.5 [update_DB.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#415-update_dbhtml)
+       4.1.6 [showDB.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#416-showdbhtml)
+       4.1.7 [create_employee.html](https://github.com/Cecilia8989/WSAA-Project/blob/main/README.md#417-create_employeehtml)
+       
+
+7. [Source]()
+
+
 ## 1. Introduction 
 
 This code builds a basic website where CRUD operations are performed on two tables within a SQL database. Users are allowed to sign in, log in, and log out. Unauthorized users can view the database but cannot create new entries or update/delete existing ones. Only logged-in users have permission to perform these actions. The website facilitates CRUD operations on two tables: one for registered users and one for the employees database. The employee database displays the name, surname, employee ID, and country for each entry. When registering on the website, usernames must be unique, and passwords must adhere to several security rules. Additionally, two users with the same employee ID cannot be created during a POST request.
