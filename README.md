@@ -362,7 +362,7 @@ To execute the script, simply run it as the main program. This will start the se
 
 ## Sources
 <details>
-    <summary> Project Assignment </summary>
+    <summary> References </summary>
     <p>
 
 * (1) [Web technology for developers](https://developer.mozilla.org/en-US/docs/Web)
@@ -397,3 +397,19 @@ To execute the script, simply run it as the main program. This will start the se
 
 </p>
 </details>
+
+<details>
+    <summary> Other Resources </summary>
+    <p>
+
+* [CSS calc() Function](https://www.w3schools.com/cssref/func_calc.php)
+* [RESTful Authentication with Flask]([https://www.python.org/](https://blog.miguelgrinberg.com/post/restful-authentication-with-flask))
+* [6.9.5.16 MySQLCursor.lastrowid Property]([https://flask.palletsprojects.com/](https://dev.mysql.com/doc/connectors/en/connector-python-api-mysqlcursor-lastrowid.html))
+* [5 Easy Ways to Insert Spaces in HTML](https://blog.hubspot.com/website/html-space)
+* [Why transform:translate(-50%, -50%) to center element?]([https://getbootstrap.com/](https://dev.to/urstrulyvishwak/why-transformtranslate-50-50-to-center-element-15m1))
+* [Dillinger](https://dillinger.io/)
+* [Awesome Readme Examples for Writing better Readmes ](https://dev.to/documatic/awesome-readme-examples-for-writing-better-readmes-3eh3)
+* 
+</p>
+</details>
+
