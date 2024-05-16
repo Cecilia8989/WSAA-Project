@@ -97,13 +97,13 @@ Navigate to a terminal where the repository is saved and run the `server.py` fil
     ```
 #### 3.2.5 Accessing the Local API
 
-open the indicated port on **Chrome browser** to navigate the API on your local network. Below is an example. In this case, the port is `http://127.0.0.1:5000`.
+open the indicated port on **Chrome browser** to navigate the API on your local network. This will start the server. By default, Flask applications run on port 5000. Then, open **Chrome** and navigate to http://127.0.0.1:5000/ to access the API.
 
 ```bash
 Running on http://127.0.0.1:5000
 ```
 
-## 4 File Description
+## 4 Files Description
 
 The project consists of several files belonging to two different categories:
 
@@ -224,8 +224,6 @@ The "update_employee.html" file enable the user to update employee records effic
 
 - **Dynamic Form Population**: To streamline the update process, the form automatically populates with existing employee data retrieved from URL parameters. By presenting users with pre-filled fields, the file simplifies the update process and enhances usability [()](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams), [()](https://builtin.com/articles/urlsearchparams).
 
-
-
 - **Navigation**: The file includes a navigation button that allows users to return to the "Update DB" in any moment. 
 
 - **JavaScript Functionality**: JavaScript functions embedded within the file orchestrate the form submission process and handle AJAX requests for updating employee records.
@@ -234,7 +232,22 @@ The "update_employee.html" file enable the user to update employee records effic
 
 ### 4.2 Python Script
 
-#### 4.2.1 create_sql_db.py
+#### 4.2.1 config_template.py
+
+The template contains the `DBConfigSQL` class, which provides a template to fill with configuration parameters for connecting to an SQL database. It includes essential details such as the host address, username, password, and security key required to establish a connection.
+
+## Key Features:
+
+- **HOST:** Specifies the host address of the SQL database.
+- **USER:** Specifies the username used to authenticate access to the SQL database.
+- **PASSWORD:** Specifies the password used to authenticate access to the SQL database.
+- **SECURITY_KEY:** Specifies the security key used inside the flask application [()](https://www.delftstack.com/howto/python-flask/flask-secret-key/).
+
+## Usage:
+
+As explained in 'How to use it' section, the user needs to enter their personalized parameters and rename the file as `config.py` to be correctly imported in the main server script and `db_connection.py`.
+
+#### 4.2.2 create_sql_db.py
 
 The primary objective of "create_sql.py" is to establish a connection to a MySQL server, create the necessary database for the API and tables if they do not exist, and populate them with sample data. The script encapsulates functionalities to execute SQL queries, create and manage database entities, and ensure the integrity and consistency of the database structure.
 
@@ -264,7 +277,7 @@ The following functions are defined and used in the script:
 
 To execute the script, simply run it as the main program. It will create the necessary database and tables, populate them with sample data, and display relevant status messages indicating the success of each operation.
 
-#### 4.2.2 db_conn.py
+#### 4.2.3 db_conn.py
 
 The `db_conn.py` script defines a class `database_connection` that provides methods for interacting with a MySQL database. This script facilitates various operations for establishing a connection and executing SQL queries. It relies on the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library and a configuration file called `config` for connection parameters.
 
@@ -294,7 +307,7 @@ The `db_conn.py` script defines a class `database_connection` that provides meth
 - `update_employee(id, employee)`: Updates an employee record in the 'employees' table.
 - `delete_employee(id)`: Deletes an employee record from the 'employees' table.
 
-#### 4.2.3 server.py
+#### 4.2.4 server.py
 
 The `server.py` script orchestrates a RESTful API tailored for managing user authentication and database interactions through CRUD operations. This Flask-based web service streamlines essential functionalities to ensure a seamless user experience and efficient data management. [Here ()](https://www.youtube.com/watch?v=dam0GPOAvVI) and [here ()](https://www.youtube.com/watch?v=71EU8gnZqZQ) the main references for this scrip.
 
@@ -312,4 +325,8 @@ The `server.py` script orchestrates a RESTful API tailored for managing user aut
 - **Database Interaction:** Interacts with two primary database tables, 'authentication_logins' and 'employees,' to execute various data retrieval and manipulation tasks. By leveraging Flask-Login and MySQL database connectivity, the script ensures efficient and reliable database interactions.
 
 - **Flash Messages:** Utilizes Flash messages for providing feedback to users during authentication, CRUD operations, and other interactions. Flash messages are used to convey success messages, error messages, and other relevant information to users [()](https://stackoverflow.com/questions/63387031/how-to-clear-existing-flash-messages-in-flask), [()](https://nrodrig1.medium.com/remove-flash-message-from-flask-web-application-e5c82e639b2f), [()](https://pythongeeks.org/flask-flashing/#:~:text=By%20default%2C%20Flask%20does%20not%20automatically%20clear%20the,the%20flash.clear%20%28%29%20function%20from%20the%20flash%20module).
+
+**Usage:**
+
+To execute the script, simply run it as the main program. This will start the server, and it will be accessible through a **Chrome browser**. By default, Flask applications run on port 5000. Then, open Chrome and navigate to http://127.0.0.1:5000/ to access the API.
 
