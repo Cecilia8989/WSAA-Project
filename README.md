@@ -232,4 +232,61 @@ The "update_employee.html" file enable the user to update employee records effic
 
 - **JavaScript Functionality**: Implements JavaScript functions to orchestrate the AJAX POST operation and handle form submission events. These functions facilitate efficient data transmission between the frontend interface and backend server, ensuring reliable creation of new employee records [()](https://www.w3schools.com/jsref/met_document_queryselector.asp).
 
+### 4.2 Python Script
+
+#### 4.2.1 create_sql_db.py
+
+The primary objective of "create_sql.py" is to establish a connection to a MySQL server, create the necessary database for the API and tables if they do not exist, and populate them with sample data. The script encapsulates functionalities to execute SQL queries, create and manage database entities, and ensure the integrity and consistency of the database structure.
+
+**Key Features:**
+
+- **MySQL Connection**: The script utilizes the [MySQL Connector ()](https://dev.mysql.com/doc/connector-python/en/) module to establish a connection to the MySQL server. It retrieves database configuration parameters from a configuration file that can be stored in a different location and secure database connectivity [A ()](https://github.com/andrewbeattycourseware). .
+
+- **Database and Table Creation**: If the specified database does not exist, the script creates it dynamically. Similarly, it creates the 'authentication_logins' and 'employees' tables if they are not present in the database, ensuring that the required database entities are available for data storage.
+
+- **Data Population**: Upon table creation, the script populates the 'employees' and 'authentication_logins' tables with sample data. This data includes employee details such as first name, last name, employee ID, and market, as well as login credentials such as username and password. 
+
+- **Data Reset**: Additionally, the script includes methods to reset the data in the 'employees' and 'authentication_logins' tables. This functionality empties the tables and inserts sample data, effectively restoring them to their original state.
+
+The following functions are defined and used in the script:
+
+- **execute_query()**: Executes a given SQL query on the database.
+- **create_db()**: Creates the specified database if it does not exist.
+- **create_authentication_logins_table()**: Creates the 'authentication_logins' table if it does not exist.
+- **create_employees_table()**: Creates the 'employees' table if it does not exist.
+- **empty_table()**: Empties the specified table by deleting all records.
+- **reset_data_employees()**: Resets employee data by emptying the 'employees' table and inserting sample data.
+- **reset_data_logins()**: Resets login data by emptying the 'authentication_logins' table and inserting sample data.
+
+**Usage:**
+
+To execute the script, simply run it as the main program. It will create the necessary database and tables, populate them with sample data, and display relevant status messages indicating the success of each operation.
+
+#### 4.2.2 db_conn.py
+
+The `db_conn.py` script defines a class `database_connection` that provides methods for interacting with a MySQL database. This script facilitates various operations for establishing a connection and executing SQL queries. It relies on the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library and a configuration file called `config` for connection parameters.
+
+**Key Features:**
+
+- **MySQL Connection**: Utilizes the [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/) library to establish a connection to the MySQL server. Connection parameters such as host, user, password, and database name are fetched from a configuration file.
+
+- **Database Interaction**: Provides methods for fetching all records from a table (`getAll()`), checking the uniqueness of usernames or employee IDs (`check_unique_username()`, `check_unique_employee_id()`), creating new employee records (`createNewEmployee()`), creating new login records (`create_new_login()`), updating employee records (`update_employee()`), and deleting employee records (`delete_employee()`).
+
+- **Data Retrieval**: Includes methods to fetch user records by username (`get_user_by_username()`) or employee ID (`get_user_by_emp_id()`), and to find a record by its ID (`find_by_id()`).
+
+**Defined Functions:**
+
+- `getcursor()`: Establishes a database connection and returns a cursor for executing SQL queries.
+- `closeAll()`: Closes both the connection and the cursor if they are open.
+- `getAll(table, attkeys)`: Fetches all records from a specified table and returns them as a list of dictionaries. The table and attribute key definitions as variables outside the function grant flexibility to the method to be used on both the tables.
+- `convertToDictionary(attkeys, resultLine)`: Converts database records to dictionaries using specified attribute keys.
+- `check_unique_username(username)`: Checks if a username is unique in the 'authentication_logins' table.
+- `check_unique_employee_id(employee_id)`: Checks if an employee ID is unique in the 'employees' table.
+- `createNewEmployee(employee)`: Creates a new employee record in the 'employees' table.
+- `create_new_login(user)`: Creates a new login record in the 'authentication_logins' table.
+- `get_user_by_username(username)`: Fetches a user record by username in order to check the uniqueness of the attribute username.
+- `get_user_by_emp_id(employee_id)`: Fetches a user record by employee ID to check the uniqueness of the attribute employee_id.
+- `find_by_id(id)`: Fetches a record by its ID to use as a unique parameter on update operation.
+- `update_employee(id, employee)`: Updates an employee record in the 'employees' table.
+- `delete_employee(id)`: Deletes an employee record from the 'employees' table.
 
